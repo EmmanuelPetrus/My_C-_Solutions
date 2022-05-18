@@ -107,54 +107,103 @@ using namespace std;
 // int main(void)
 // {
 //     float amount, rate, result, per_rate;
-//     int years = 0;
+//     int final_amount = 0;
 //     cout << "Enter initial amount: ";
 //     cin >> amount;
-//     cout << "Enter number of years: ";
-//     cin >> years;
+//     cout << "Enter number of final_amount: ";
+//     cin >> final_amount;
 //     cout << "Enter the interest rate (percent per year): ";
 //     cin >> rate;
 //     per_rate = rate / 100;
 //     // cout<<per_rate<<endl;
-//     for (int i = 0; i < years; i++)
+//     for (int i = 0; i < final_amount; i++)
 //     {
 //         result = amount + amount * per_rate;
 //         amount = result;
 //     }
-//     cout<<"The amount accrued over " << years <<" years is " << result;
+//     cout<<"The amount accrued over " << final_amount <<" final_amount is " << result;
 //     return 0;
 // }
 
 // Addition of both pounds ,shilligs and pence
-int main(void)
-{
-    int pounds1, pounds2, total, shillings1, shillings2, pence1, pence2;
-    char point1, point2, point3, point4, ans = 'y';
-    do
-    {
-        cout << "Enter first amount: \x9c";
-        cin >> pounds1 >> point1 >> shillings1 >> point2 >> pence1;
-        cout << "Enter second amount: \x9c";
-        cin >> pounds2 >> point3 >> shillings2 >> point4  >> pence2;
-        int shillings_total = shillings1 + shillings2;
-        int pounds_total = pounds1 + pounds2;
-        int pence_total = pence1 + pence2;
+// int main(void)
+// {
+//     int pounds1, pounds2, total, shillings1, shillings2, pence1, pence2;
+//     char point1, point2, point3, point4, ans = 'y';
+//     do
+//     {
+//         cout << "Enter first amount: \x9c";
+//         cin >> pounds1 >> point1 >> shillings1 >> point2 >> pence1;
+//         cout << "Enter second amount: \x9c";
+//         cin >> pounds2 >> point3 >> shillings2 >> point4  >> pence2;
+//         int shillings_total = shillings1 + shillings2;
+//         int pounds_total = pounds1 + pounds2;
+//         int pence_total = pence1 + pence2;
 
-        if ((pence_total / 12) > 0)
-        {
-            shillings_total += pence_total / 12;
-            pence_total %= 12;
-        }
-        if ((shillings_total) / 20 >= 0)
-        {
-            pounds_total += shillings_total / 20;
-            shillings_total %= 20;
-        }
+//         if ((pence_total / 12) > 0)
+//         {
+//             shillings_total += pence_total / 12;
+//             pence_total %= 12;
+//         }
+//         if ((shillings_total) / 20 >= 0)
+//         {
+//             pounds_total += shillings_total / 20;
+//             shillings_total %= 20;
+//         }
 
-        cout << "Total is \x9c" << pounds_total << point1 << shillings_total << point2 << pence_total << endl
-             << "Do you want to do any further conversions (y/n) ?  ";
-        cin >> ans;
-    } while (ans == 'y');
+//         cout << "Total is \x9c" << pounds_total << point1 << shillings_total << point2 << pence_total << endl
+//              << "Do you want to do any further conversions (y/n) ?  ";
+//         cin >> ans;
+//     } while (ans == 'y');
 
-    return 0;
-}
+//     return 0;
+// }
+
+// Program to calculate number of ways in which a particular number of guests can sit round a table
+// int main(void)
+// {
+//     int n = 0, r = 0, m  = 1,p = 1 ;
+//     cout<< "Enter total number of guests:";
+//     cin>>n;
+//     cout<<"Enter total number of chairs around a table:";
+//     cin>>r;
+//     int diff = n - r;
+//     for (int i = n; i > 0; i--)
+//     {
+//         m*= i;
+//     }
+//     for (int i = diff; i >0; i--)
+//     {
+//         p*=i;
+//     }
+//     int result = m/p;
+//     cout<< "There are "<<result<<" ways to sit around the table";
+
+//     return 0;
+// }
+
+// Program to determine the number of years required to reach an amount
+
+// int main(void)
+// {
+//     float amount, rate, final_amount, per_rate;
+//     int years = 0;
+//     cout << "Enter initial amount: ";
+//     cin >> amount;
+//     cout << "Enter number of final_amount: ";
+//     cin >> final_amount;
+//     cout << "Enter the interest rate (percent per year): ";
+//     cin >> rate;
+//     per_rate = rate / 100;
+
+//     while (final_amount > amount)
+//     {
+//         ++years;
+//         final_amount -=  (final_amount*per_rate);
+//         cout<<final_amount<<endl;
+//     }
+
+//     cout << "The number of years is " << years;
+//     return 0;
+// }
+
