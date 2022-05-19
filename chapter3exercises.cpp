@@ -107,21 +107,23 @@ using namespace std;
 // int main(void)
 // {
 //     float amount, rate, result, per_rate;
-//     int final_amount = 0;
+//     int years = 0;
 //     cout << "Enter initial amount: ";
 //     cin >> amount;
-//     cout << "Enter number of final_amount: ";
-//     cin >> final_amount;
+//     cout << "Enter number of years: ";
+//     cin >> years;
 //     cout << "Enter the interest rate (percent per year): ";
 //     cin >> rate;
 //     per_rate = rate / 100;
-//     // cout<<per_rate<<endl;
-//     for (int i = 0; i < final_amount; i++)
+//     result = amount;
+    
+//     for (int i = 0; i < years; i++)
 //     {
-//         result = amount + amount * per_rate;
-//         amount = result;
+//         result *=  (1 + per_rate) ;
+        
+//         cout<<result<<endl;
 //     }
-//     cout<<"The amount accrued over " << final_amount <<" final_amount is " << result;
+//     cout<<"The amount accrued over " << years <<" years is " << result;
 //     return 0;
 // }
 
@@ -196,10 +198,10 @@ using namespace std;
 //     cin >> rate;
 //     per_rate = rate / 100;
 
-//     while (final_amount > amount)
+//     while (final_amount >= amount)
 //     {
 //         ++years;
-//         final_amount -=  (final_amount*per_rate);
+//         final_amount /= (1+per_rate);
 //         cout<<final_amount<<endl;
 //     }
 
