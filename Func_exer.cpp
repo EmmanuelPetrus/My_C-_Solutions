@@ -313,7 +313,7 @@ int main(void)
             }
             break;
         default:
-            cout << "Invalid input characters";
+
             break;
         }
         cout << "\nDo you still want to perform anymore operations? ";
