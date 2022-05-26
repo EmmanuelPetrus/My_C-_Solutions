@@ -1,6 +1,6 @@
-// #include <iostream>
-// #include <conio.h>
-// using namespace std;
+#include <iostream>
+#include <conio.h>
+using namespace std;
 
 // struct Phone
 // {
@@ -38,7 +38,7 @@
 //     return 0;
 // }
 
-// Using enum to optimize work 
+// Using enum to optimize work
 // enum etype
 // {
 //     laborer,
@@ -106,4 +106,5 @@
 //     }
 //     return 0;
 // }
+
 
