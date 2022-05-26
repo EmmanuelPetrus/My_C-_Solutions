@@ -28,10 +28,10 @@ int main()
     // intVar = (static_cast<double>(intVar) * 10) / 10;
     // cout << "intVar = " << intVar << endl;
 
-    double number , answer ;
-    cout << "Enter a number: ";
-    cin >> number; 
-    answer = sqrt(number);
-    cout << "Square root is " << answer << endl;
-    return 0;
-}
+//     double number , answer ;
+//     cout << "Enter a number: ";
+//     cin >> number; 
+//     answer = sqrt(number);
+//     cout << "Square root is " << answer << endl;
+//     return 0;
+// }

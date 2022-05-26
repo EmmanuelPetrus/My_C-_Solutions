@@ -1,4 +1,6 @@
 #include <iostream>
+#include <conio.h>
+#include <string.h>
 using namespace std;
 // struct part
 // {
@@ -130,7 +132,7 @@ using namespace std;
 //     card2 = card1;
 //     card1 = temp;
 
-//     cout << "Now, where(1, 2, or 3) is the ace of spades? ";
+//     cout << "NOw, where(1, 2, or 3) is the ace of spades? ";
 //     cin >> position;
 
 //     switch (position)
@@ -152,3 +154,60 @@ using namespace std;
 //     return 0;
 // }
 
+// Enumerations
+// enum days_of_week
+// {
+//     Sun,
+//     Mon,
+//     Tue,
+//     Wed,
+//     Thur,
+//     Fri,
+//     Sat
+// };
+// int main(void)
+// {
+//     days_of_week day1, day2;
+//     day1 = Mon;
+//     day2 = Thur;
+
+//     int diff = day2 - day1;
+//     cout << "Days between = " << diff << endl;
+//     if (day1 < day2)
+//         cout << "day1 comes before day2\n";
+//     return 0;
+// }
+
+// A word count example
+// enum itsaWord
+// {
+//     NO,
+//     YES
+// };
+// int main(void)
+// {
+//     itsaWord isWord = NO;
+
+//     char ch = 'a';
+//     int wordcount = 0;
+
+//     cout << "Enter a phrase:\n";
+//     do
+//     {
+//         ch = getche();
+//         if (ch == ' ' || ch == '\r')
+//         {
+//             if (isWord == YES)
+//             {
+//                 wordcount++;
+//                 isWord = NO;
+//             }
+//         }
+//         else if (isWord == NO)
+//             isWord = YES;
+
+
+//     } while (ch != '\r');
+//     cout << "\n---Word count is " << wordcount << "---\n";
+//     return 0;
+// }
