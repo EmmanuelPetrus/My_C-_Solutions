@@ -381,17 +381,74 @@ using namespace std;
 
 // inline functions
 
-inline float lbstokg(float pounds)
-{
-    return 0.453592 * pounds;
-}
+// inline float lbstokg(float pounds)
+// {
+//     return 0.453592 * pounds;
+// }
 
-int main()
-{
-    float lbs;
+// int main()
+// {
+//     float lbs;
 
-    cout << "\nEnter your weight in pounds: ";
-    cin >> lbs;
-    cout << "Your weight in kilograms is " << lbstokg(lbs) << endl;
-    return 0;
-}
+//     cout << "\nEnter your weight in pounds: ";
+//     cin >> lbs;
+//     cout << "Your weight in kilograms is " << lbstokg(lbs) << endl;
+//     return 0;
+// }
+
+// Default arguments
+// void repchar(char = '*', int = 45);
+// int main(void)
+// {
+//     repchar();
+//     repchar('=');
+//     repchar('+', 30);
+//     return 0;
+// }
+
+// void repchar(char ch, int n)
+// {
+//     for (int j = 0; j < n; j++)
+//         cout << ch;
+//     cout << endl;
+// }
+
+// Understanding scope
+
+// char ch = 'a';
+// void getachar();
+// void putachar();
+
+// int main(void)
+// {
+//     while (ch != '\r')
+//     {
+//         getachar();
+//         putachar();
+//     }
+//     cout << endl;
+//     return 0;
+// }
+// void getachar()
+// {
+//     ch = getch();
+// }
+
+// void putachar()
+// {
+//     cout << ch;
+// }
+
+// Returning a function by referece
+// int x;
+// int &setw();
+// int main(void)
+// {
+//     setw() = 92;
+//     cout << x << endl;
+//     return 0;
+// }
+// int &setw()
+// {
+//     return x;
+// }
