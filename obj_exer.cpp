@@ -490,91 +490,91 @@ using namespace std;
 //     return 0;
 // }
 
-class fraction
-{
-private:
-    float num;
-    char op;
-    float deno;
+// class fraction
+// {
+// private:
+//     float num;
+//     char op;
+//     float deno;
 
-public:
-    fraction() : num(0.0), op('/'), deno(0.0) {}
-    fraction(float a, float den) : num(a), op('/'), deno(den) {}
-    void lowterms();
-    void dispfrac()
-    {
-        lowterms();
-        cout << "      " << num << "/" << deno << endl;
-    }
-    void dispfrac2()
-    {
-        lowterms();
-        cout << num << "/" << deno << "  ";
-    }
-    void dispfrac3()
-    {
-        lowterms();
-        cout << " " << num << "/" << deno << endl;
-    }
-    fraction fmul(fraction &b);
-};
+// public:
+//     fraction() : num(0.0), op('/'), deno(0.0) {}
+//     fraction(float a, float den) : num(a), op('/'), deno(den) {}
+//     void lowterms();
+//     void dispfrac()
+//     {
+//         lowterms();
+//         cout << "      " << num << "/" << deno << endl;
+//     }
+//     void dispfrac2()
+//     {
+//         lowterms();
+//         cout << num << "/" << deno << "  ";
+//     }
+//     void dispfrac3()
+//     {
+//         lowterms();
+//         cout << " " << num << "/" << deno << endl;
+//     }
+//     fraction fmul(fraction &b);
+// };
 
-fraction fraction::fmul(fraction &b)
-{
-    fraction c;
-    c.num = num * b.num;
-    c.deno = deno * b.deno;
-    return c;
-}
+// fraction fraction::fmul(fraction &b)
+// {
+//     fraction c;
+//     c.num = num * b.num;
+//     c.deno = deno * b.deno;
+//     return c;
+// }
 
-void fraction::lowterms() // change ourself to lowest terms
-{
-    long tnum, tden, temp, gcd;
-    tnum = labs(num);  // use non-negative copies
-    tden = labs(deno); // (needs cmath)
-    if (tden == 0)     // check for n/0
-    {
-        cout << "Illegal fraction : division by 0";
-        exit(1);
-    }
-    else if (tnum == 0) // check for 0/n
-    {
-        num = 0;
-        deno = 1;
-        return;
-    }
-    // this 'while' loop finds the gcd of tnum and tden
-    while (tnum != 0)
-    {
-        if (tnum < tden) // ensure numerator larger
-        {
-            temp = tnum;
-            tnum = tden;
-            tden = temp;
-        }                   // swap them
-        tnum = tnum - tden; // subtract them
-    }
-    gcd = tden;        // this is greatest common divisor
-    num = num / gcd;   // divide both num and den by gcd
-    deno = deno / gcd; // to reduce frac to lowest terms
-}
-int main(void)
-{
-    int b;
-    cout << "Kindly enter a denominator: ";
-    cin >> b;
-    fraction k;
-    for (int i = 1; i < 6; i++)
-    {
-        fraction a1(i, b);
-        a1.dispfrac();
-        cout << "--------------" << endl;
-        for (int i = 1; i < 6; i++)
-        {
-            fraction a2(i, b);
-            a2.dispfrac2();
-            k = a1.fmul(a2);
-            k.dispfrac3();
-        }
-    }
-}
+// void fraction::lowterms() // change ourself to lowest terms
+// {
+//     long tnum, tden, temp, gcd;
+//     tnum = labs(num);  // use non-negative copies
+//     tden = labs(deno); // (needs cmath)
+//     if (tden == 0)     // check for n/0
+//     {
+//         cout << "Illegal fraction : division by 0";
+//         exit(1);
+//     }
+//     else if (tnum == 0) // check for 0/n
+//     {
+//         num = 0;
+//         deno = 1;
+//         return;
+//     }
+//     // this 'while' loop finds the gcd of tnum and tden
+//     while (tnum != 0)
+//     {
+//         if (tnum < tden) // ensure numerator larger
+//         {
+//             temp = tnum;
+//             tnum = tden;
+//             tden = temp;
+//         }                   // swap them
+//         tnum = tnum - tden; // subtract them
+//     }
+//     gcd = tden;        // this is greatest common divisor
+//     num = num / gcd;   // divide both num and den by gcd
+//     deno = deno / gcd; // to reduce frac to lowest terms
+// }
+// int main(void)
+// {
+//     int b;
+//     cout << "Kindly enter a denominator: ";
+//     cin >> b;
+//     fraction k;
+//     for (int i = 1; i < 6; i++)
+//     {
+//         fraction a1(i, b);
+//         a1.dispfrac();
+//         cout << "--------------" << endl;
+//         for (int i = 1; i < 6; i++)
+//         {
+//             fraction a2(i, b);
+//             a2.dispfrac2();
+//             k = a1.fmul(a2);
+//             k.dispfrac3();
+//         }
+//     }
+// }
