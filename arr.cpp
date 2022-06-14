@@ -1,7 +1,10 @@
 #include <iostream>
 #include <iomanip>
 #include <stdio.h>
-#include <string.h>
+#include <cstring>
+#include <string>
+// #include <basic_string.h>
+// #include <basic_string.tcc>
 using namespace std;
 
 // int main(int argc, char const *argv[])
@@ -358,4 +361,248 @@ using namespace std;
 //     return 0;
 // }
 
-// using the cin.get function 
+// using the cin.get function
+//   int main(int argc, char const *argv[])
+// {
+//     const int MAX = 80;
+//     char str[MAX];
+
+//     cout << "\nEnter a string: ";
+//     cin.get(str,MAX,'a');
+//     cout << "You entered: " << str << endl;
+//     return 0;
+// }
+
+// Array of strings
+// int main(int argc, char const *argv[])
+// {
+//     const int DAYS = 7;
+//     const int MAX = 10;
+
+//     char star[DAYS][MAX] = {"Sunday", "Monday", "Tuesday",
+//                             "Wednesday", "Thursday",
+//                             "Friday", "Saturday"};
+//     for (int j = 0; j < DAYS; j++)
+//         cout << star[j] << endl;
+//     return 0;
+// }
+
+// strings as class members
+
+// class part
+// {
+// private:
+//     char partname[30];
+//     int partnumber;
+//     double cost;
+
+// public:
+//     void setpart(char pname[], int pn, double c)
+//     {
+//         strcpy(partname, pname);
+//         partnumber = pn;
+//         cost = c;
+//     }
+//     void showpart()
+//     {
+//         cout << "\nName=" << partname;
+//         cout << ", number=" << partnumber;
+//         cout << ", cost=$" << cost;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     part part1, part2;
+//     char m[]= "handle bolt";
+//     char k[] = "start lever";
+//     part1.setpart(m, 4473, 217.55); // set parts
+//     part2.setpart(k, 9924, 419.25);
+//     cout << "\nFirst part: ";
+//     part1.showpart(); // show parts
+//     cout << "\nSecond part: ";
+//     part2.showpart();
+//     cout << endl;
+//     return 0;
+// }
+
+// building our own string class
+// class String
+// {
+// private:
+//     enum
+//     {
+//         SZ = 80
+//     };
+//     char str[SZ];
+
+// public:
+//     String()
+//     {
+//         str[0] = '\0';
+//     }
+//     String(char s[])
+//     {
+//         strcpy(str, s);
+//     }
+//     void display()
+//     {
+//         cout << str;
+//     }
+//     void concat(String s2)
+//     {
+//         if (strlen(str) + strlen(s2.str) < SZ)
+//             strcat(str, s2.str);
+//         else
+//             cout << "\nString too long";
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     char m[] = "Merry Christmas!  ";
+//     char k[] = "Season's Greetings! ";
+//     String s1(m);    // uses constructor 2;
+//     String s2 = k; // alternate form of 2
+//     String s3;
+
+//     cout << "\ns1=";
+//     s1.display();
+//     cout << "\ns2=";
+//     s2.display();
+//     cout << "\ns3=";
+//     s3 = s1;
+//     s3.concat(s2);
+//     cout << "\ns3=";
+//     s3.display();
+//     cout << endl;
+//     return 0;
+// }
+
+// The Standard C++ string Class
+// int main(int argc, char const *argv[])
+// {
+//     string s1("Man");
+//     string s2 = "Beast";
+//     string s3;
+
+//     s3 = s1;
+//     cout << "s3 = " << s3 << endl;
+//     s3 = "Neither " + s1 + " nor ";
+//     s3 += s2;
+//     cout << "s3 = " << s3 << endl;
+
+//     s1.swap(s2);
+//     cout << s1 << " nor " << s2 << endl;
+//     return 0;
+// }
+
+// Input/Output with string Objects
+// int main()
+// {
+//     string full_name, nickname, address;
+//     string greeting("Hello, ");
+
+//     cout << "Enter your full name: ";
+//     getline(cin, full_name);
+//     cout << "Your full name is: " << full_name << endl;
+
+//     cout << "Enter your nickname: ";
+//     cin >> nickname;
+
+//     greeting += nickname;
+//     cout << greeting << endl;
+
+//     cout << "Enter your address on separate lines\n";
+//     cout << "Terminate with '$'\n";
+//     getline(cin, address, '$');
+//     cout << "Your address is: " << address << endl;
+//     return 0;
+// }
+
+// Finding string Objects
+// int main(int argc, char const *argv[])
+// {
+//     string s1 = "In Xanadu did Kubla Kahn a stately pleasure dome decree";
+//     int n;
+//     n = s1.find("Kubla");
+//     cout << "Found Kubla at " << n << endl;
+
+//     n = s1.find_first_of("spde");
+//     cout << "First of spde at " << n << endl;
+
+//     n = s1.find_first_not_of("aeiouAEIOU");
+//     cout << "First consonant at " << n << endl;
+//     return 0;
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     string s1("Quick! Send for Count Graystone.");
+//     string s2("Lord");
+//     string s3("Don't ");
+//     s1.erase(0, 7);             // remove "Quick!"
+//     s1.replace(9, 5, s2);       // replace "Count" with "Lord"
+//     s1.replace(0, 1, "s");      // replace 'S' with 's'
+//     s1.insert(0, s3);           // insert "Don't " at beginning
+//     s1.erase(s1.size() - 1, 1); // remove  '-'
+//     s1.append(3, '!');
+
+//     int x = s1.find(' ');
+//     while (x < s1.size())
+//     {
+//         s1.replace(x, 1, "/");
+//         x = s1.find(' ');
+//     }
+//     cout << "s1: " << s1 << endl;
+//     return 0;
+// }
+
+// Comparing strings
+// int main(int argc, char const *argv[])
+// {
+//     string aName = "George";
+//     string userName;
+
+//     cout << "Enter your first name: ";
+//     cin >> userName;
+//     if (userName == aName)
+//         cout << "Greetings, George\n";
+//     else if (userName < aName)
+//         cout << "You come before George\n";
+//     else
+//         cout << "You come after George\n";
+//     int n = userName.compare(0, 2, aName, 0, 2);
+//     cout << "The first two letters of your name ";
+//     if (n == 0)
+//         cout << "match ";
+//     else if (n < 0)
+//         cout << "come before ";
+//     else
+//         cout << "come after ";
+//     cout << aName.substr(0, 2) << endl;
+//     return 0;
+// }
+
+// Accessing individual characters in a string
+// int main(int argc, char const *argv[])
+// {
+//     char charray[80];
+//     string word;
+
+//     cout << "Enter a word: ";
+//     cin >> word;
+//     int wlen = word.length();
+
+//     cout << "One character at a time: ";
+//     for (int j = 0; j < wlen; j++)
+//         cout << word.at(j);
+
+//     word.copy(charray, wlen, 0);
+//     charray[wlen] = 0;
+
+//     cout << "\nArray contains: " << charray << endl;
+//     return 0;
+// }
+
+// Other string Functions
