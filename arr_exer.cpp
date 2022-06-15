@@ -25,35 +25,114 @@ using namespace std;
 //     reversit(word);
 //     return 0;
 // }
-#define MAX 4
-class Employee
+// #define MAX 4
+// class Employee
+// {
+// private:
+//     string name;
+//     long int number;
+
+// public:
+//     Employee() : name("Emmy"), number(0){};
+//     Employee(string n, long int no) : name(n), number(no){};
+//     void getdata()
+//     {
+//         cout << "Enter your name: ";
+//         cin >> name;
+//         cout << "Enter your phone number:";
+//         cin >> number;
+//     }
+//     void putdata()
+//     {
+//         cout << "Your name is " << name << " and your number is " << number << endl;
+//     }
+// };
+
+// int main(void)
+// {
+//     Employee data[MAX];
+//     for (int i = 0; i < MAX; i++)
+//         data[i].getdata();
+//     for (int i = 0; i < MAX; i++)
+//         data[i].putdata();
+//     return 0;
+// }
+
+// an array of classes
+#define MAX 3
+class Distance
 {
 private:
-    string name;
-    long int number;
+    int feet;
+    float inches;
 
 public:
-    Employee() : name("Emmy"), number(0){};
-    Employee(string n, long int no) : name(n), number(no){};
-    void getdata()
+    void getdist()
     {
-        cout << "Enter your name: ";
-        cin >> name;
-        cout << "Enter your phone number:";
-        cin >> number;
+        cout << "\n    Enter feet: ";
+        cin >> feet;
+        cout << "     Enter inches: ";
+        cin >> inches;
     }
-    void putdata()
+    void showdist() const
     {
-        cout << "Your name is " << name << " and your number is " << number << endl;
+        cout << feet << "\'-" << inches << '\"';
     }
+    void show_ave_dist() const
+    {
+        cout << "The average is: " << feet << "\'-" << inches << '\"';
+    }
+    void add_dist(Distance, Distance);
+    void div_dist(Distance, int);
 };
 
-int main(void)
+void Distance::add_dist(Distance d2, Distance d3)
 {
-    Employee data[MAX];
-    for (int i = 0; i < MAX; i++)
-        data[i].getdata();
-    for (int i = 0; i < MAX; i++)
-        data[i].putdata();
+    inches = d2.inches + d3.inches; // add the inches
+    feet = 0;                       //(for possible carry)
+    if (inches >= 12.0)             // if total exceeds 12.0,
+    {                               // then decrease inches
+        inches -= 12.0;             // by 12.0 and
+        feet++;                     // increase feet
+    }                               // by 1
+    feet += d2.feet + d3.feet;      // add the feet
+}
+
+void Distance::div_dist(Distance d2, int divisor)
+{
+    float fltfeet = d2.feet + d2.inches / 12.0;
+    fltfeet /= divisor;
+    feet = int(fltfeet);
+    inches = (fltfeet - feet) * 12.0;
+}
+int main(int argc, char const *argv[])
+{
+    Distance dist[MAX];
+    Distance total, ave_rage;
+    int n = 0, j;
+    char ans;
+    cout << endl;
+    do
+    {
+        if (n >= MAX)
+        {
+            cout << "\nThe array is full!!!\n";
+            break;
+        }
+
+        cout << "Enter distance number " << n + 1;
+        dist[n++].getdist();
+        cout << "Enter another (y/n)?: ";
+        cin >> ans;
+
+    } while (ans != 'n');
+
+    for (int i = 0, j = MAX - 1; i <= j / 2; i++, j--)
+    {
+        total.add_dist(dist[i], dist[j]);
+    }
+    ave_rage.div_dist(total, MAX);
+    ave_rage.show_ave_dist();
+    cout << endl;
     return 0;
 }
