@@ -69,19 +69,19 @@ using namespace std;
 // }
 
 // fraction evaluator
-int main()
-{
-    int a, c, d, e;
-    char b, f;
-    cout << "Kindly enter the first fraction: ";
-    cin >> a >> b >> c;
-    cout << "Kindly enter the second fraction: ";
-    cin >> d >> f >> e;
-    int numerator = (a * e) + (d * c);
-    int denominator = c * e;
-    cout << "The result is: " << numerator << b << denominator << endl;
-    return 0;
-}
+// int main()
+// {
+//     int a, c, d, e;
+//     char b, f;
+//     cout << "Kindly enter the first fraction: ";
+//     cin >> a >> b >> c;
+//     cout << "Kindly enter the second fraction: ";
+//     cin >> d >> f >> e;
+//     int numerator = (a * e) + (d * c);
+//     int denominator = c * e;
+//     cout << "The result is: " << numerator << b << denominator << endl;
+//     return 0;
+// }
 
 // Pounds conveter from old system to new money siystem British
 // int main(void)
