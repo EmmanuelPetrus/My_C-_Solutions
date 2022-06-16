@@ -3,8 +3,8 @@
 #include <cmath>
 using namespace std;
 
-int main()
-{
+// int main()
+// {
     // cout <<"Every age has a language of its own";
     // cout << "what is your name";
     //int ftemp; // for temperature in fahrenheit
