@@ -1,4 +1,7 @@
 #include <iostream>
+#include <string.h>
+#include <stdlib.h>
+
 using namespace std;
 
 // class Counter
@@ -115,8 +118,6 @@ using namespace std;
 //     }
 // };
 
-
-
 // int main(void)
 // {
 //     Counter c1, c2;
@@ -135,5 +136,179 @@ using namespace std;
 //     return 0;
 // }
 
-// Overloading Binary Operators 
-class Distance 
+// Overloading Binary Operators
+// class Distance
+// {
+// private:
+//     int feet;
+//     float inches;
+
+// public:
+//     Distance() : feet(0), inches(0.0)
+//     {
+//     } // constructor (two args)
+//     Distance(int ft, float in) : feet(ft), inches(in)
+//     {
+//     }
+//     void getdist() // get length from user
+//     {
+//         cout << "\nEnter feet : ";
+//         cin >> feet;
+//         cout << "Enter inches : ";
+//         cin >> inches;
+//     }
+//     void showdist() const // display distance
+//     {
+//         cout << feet << "\'-" << inches << '\"';
+//     }
+//     Distance operator+(Distance) const; // add 2 distances
+// };
+
+// Distance Distance::operator+(Distance d2) const
+// {
+//     int f = feet + d2.feet;
+//     float i = inches + d2.inches;
+//     if (i >= 12.0)         // if total exceeds 12.0,
+//     {                      // then decrease inches
+//         i -= 12.0;         // by 12.0 and
+//         f++;               // increase feet by 1
+//     }                      // return a temporary Distance
+//     return Distance(f, i); // initialized to sum
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     Distance dist1, dist3, dist4;
+//     dist1.getdist();
+
+//     Distance dist2(11, 6.25);
+
+//     dist3 = dist1 + dist2;
+//     dist4 = dist1 + dist2 + dist3;
+
+//     cout << "dist1 = ";
+//     dist1.showdist();
+//     cout << endl;
+//     cout << "dist2 = ";
+//     dist2.showdist();
+//     cout << endl;
+//     cout << "dist3 = ";
+//     dist3.showdist();
+//     cout << endl;
+//     cout << "dist4 = ";
+//     dist4.showdist();
+//     cout << endl;
+//     return 0;
+// }
+
+// Concatenating Strings
+// class String
+// {
+// private:
+//     enum
+//     {
+//         SZ = 80
+//     };
+//     char str[SZ];
+
+// public:
+//     String()
+//     {
+//         strcpy(str, "");
+//     };
+//     String(char s[])
+//     {
+//         strcpy(str, s);
+//     }
+//     void display() const
+//     {
+//         cout << str;
+//     }
+//     String operator+(String ss) const
+//     {
+//         String temp;
+//         if (strlen(str) + strlen(ss.str) < SZ)
+//         {
+//             strcpy(temp.str, str);
+//             strcat(temp.str, ss.str);
+//         }
+//         else
+//         {
+//             cout << "\nString overflow";
+//             exit(1);
+//         }
+//         return temp;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     // String s1 = "\nMerry Christmas!    ";
+//     // String s2 = "Happy new year!";
+//     // String s3;
+//     char p[] = "\nMerry Christmas! ";
+//     char m[] = "Happy new year!";
+//     String s1(p);
+//     String s2(m);
+//     String s3;
+//     s1.display();
+//     s2.display();
+//     s3.display();
+
+//     s3 = s1 + s2;
+//     s3.display();
+//     cout << endl;
+//     return 0;
+// }
+
+class Distance
+{
+private:
+    int feet;
+    float inches;
+
+public:
+    Distance() : feet(0), inches(0.0)
+    {
+    } // constructor (two args)
+    Distance(int ft, float in) : feet(ft), inches(in)
+    {
+    }
+    void getdist() // get length from user
+    {
+        cout << "\nEnter feet : ";
+        cin >> feet;
+        cout << "Enter inches : ";
+        cin >> inches;
+    }
+    void showdist() const // display distance
+    {
+        cout << feet << "\'-" << inches << '\"';
+    }
+    bool operator<(Distance) const;
+};
+bool Distance::operator<(Distance d2) const
+{
+    float bf1 = feet + inches / 12;
+    float bf2 = d2.feet + d2.inches / 12;
+    return (bf1 < bf2) ? true : false;
+}
+
+int main(int argc, char const *argv[])
+{
+    Distance dist1;
+    dist1.getdist();
+
+    Distance dist2(11, 6.25);
+
+    cout << "dist1 = ";
+    dist1.showdist();
+    cout << "dist2 = ";
+    dist2.showdist();
+    if (dist1 < dist2)
+        cout << "\ndist1 is less than dist2";
+    else
+        cout << "\ndist1 is greater than (or equal to) dist2";
+    cout << endl;
+    return 0;
+}
