@@ -63,43 +63,43 @@ using namespace std;
 // }
 
 // an array of classes
-// #define MAX 3
-// class Distance
-// {
-// private:
-//     int feet;
-//     float inches;
+#define MAX 3
+class Distance
+{
+private:
+    int feet;
+    float inches;
 
-// public:
-//     void getdist()
-//     {
-//         cout << "\n    Enter feet: ";
-//         cin >> feet;
-//         cout << "     Enter inches: ";
-//         cin >> inches;
-//     }
-//     void showdist() const
-//     {
-//         cout << feet << "\'-" << inches << '\"';
-//     }
-//     void show_ave_dist() const
-//     {
-//         cout << "The average is: " << feet << "\'-" << inches << '\"';
-//     }
-//     void add_dist(Distance, Distance);
-//     void div_dist(Distance, int);
-// };
+public:
+    void getdist()
+    {
+        cout << "\n    Enter feet: ";
+        cin >> feet;
+        cout << "     Enter inches: ";
+        cin >> inches;
+    }
+    void showdist() const
+    {
+        cout << feet << "\'-" << inches << '\"';
+    }
+    void show_ave_dist() const
+    {
+        cout << "The average is: " << feet << "\'-" << inches << '\"';
+    }
+    void add_dist(Distance, Distance);
+    void div_dist(Distance, int);
+};
 
-// void Distance::add_dist(Distance d2, Distance d3)
-// {
-//     inches = d2.inches + d3.inches; // add the inches
-//     feet = 0;                       //(for possible carry)
-//     if (inches >= 12.0)             // if total exceeds 12.0,
-//     {                               // then decrease inches
-//         inches -= 12.0;             // by 12.0 and
-//         feet++;                     // increase feet
-//     }                               // by 1
-//     feet += d2.feet + d3.feet;      // add the feet
+void Distance::add_dist(Distance d2, Distance d3)
+{
+    inches = d2.inches + d3.inches; // add the inches
+    feet = 0;                       //(for possible carry)
+    if (inches >= 12.0)             // if total exceeds 12.0,
+    {                               // then decrease inches
+        inches -= 12.0;             // by 12.0 and
+        feet++;                     // increase feet
+    }                               // by 1
+    feet += d2.feet + d3.feet;      // add the feet
 // }
 
 // void Distance::div_dist(Distance d2, int divisor)
