@@ -631,23 +631,244 @@ using namespace std;
 //     Distance dist2(5, 10.25); // uses 2-arg constructor
 //     mtrs = dist2;             // also uses conversion op
 //     cout << "\ndist2 = " << mtrs << " meters\n";
-//     // dist2 = mtrs; //error, = won’t convert
+//     // dist2 = mtrs; //error, = won't convert
 //     return 0;
 // }
 
 // Conversion between c-strings and string objects
 
-Class String 
+// class String
+// {
+// private:
+//     enum
+//     {
+//         SZ = 80
+//     };
+//     char str[SZ];
+
+// public:
+//     String() { str[0] = '\0'; }
+//     String(char s[])
+//     {
+//         strcpy(str, s);
+//     }
+//     void display() const
+//     {
+//         cout << str;
+//     }
+//     operator char *() // conversion operator
+//     {
+//         return str;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     String s1;
+//     char xstr[] = "Emmanuel Peter";
+//     s1 = xstr;
+//     s1.display();
+
+//     char str[] =" How've you been boy?";
+//     String s2 = str;
+
+//     cout << static_cast<char *>(s2);
+//     cout << endl;
+//     return 0;
+// }
+
+class time12
 {
-    private:
-    enum {SZ = 80};
-    char str[SZ];
-    public:
-    String(){str[0]= '\0';}
-    String(char s[])
-    {strcpy(str,s);}
-    void display()const
-    {cout << str;}
-    operator char*()   //conversion operator
-    {return str;}
+private:
+    bool pm;
+    int hrs;
+    int mins;
+
+public:
+    time12() : pm(true), hrs(0), mins(0) {}
+    time12(bool ap, int h, int m) : pm(ap), hrs(h), mins(m) {}
+    void display() const
+    {
+        cout << hrs << ':';
+        if (mins < 10)
+            cout << '0';
+        cout << mins << ' ';
+        string am_pm = pm ? "p.m." : "a.m.";
+        cout << am_pm;
+    }
 };
+
+// class time24
+// {
+// private:
+//     int hours;
+//     int minutes;
+//     int seconds;
+
+// public:
+//     time24() : hours(0), minutes(0), seconds(0) {}
+//     time24(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
+//     void display() const // format: 23:15:01
+//     {
+//         if (hours < 10)
+//             cout << '0';
+//         cout << hours << ':';
+//         if (minutes < 10)
+//             cout << '0';
+//         cout << minutes << ':';
+//         if (seconds < 10)
+//             cout << '0';
+//         cout << seconds;
+//     }
+//     operator time12() const; // conversion operator
+// };
+
+// time24::operator time12() const
+// {
+//     int hrs24 = hours;
+//     bool pm = hours < 12 ? false : true;
+
+//     int roundMins = seconds < 30 ? minutes : minutes + 1;
+//     if (roundMins == 60)
+//     {
+//         roundMins = 0;
+//         ++hrs24;
+//         if (hrs24 == 12 || hrs24 == 24)
+//             pm = (pm == true) ? false : true;
+//     }
+//     int hrs12 = (hrs24 < 13) ? hrs24 : hrs24 - 12;
+//     if (hrs12 == 0)
+//     {
+//         hrs12 = 12;
+//         pm = false;
+//     }
+//     return time12(pm, hrs12, roundMins);
+// }
+
+// int main(void)
+// {
+//     int h, m, s;
+//     while (true)
+//     {
+//         cout << "Enter 24-hour time: \n";
+//         cout << "    Hours (0 to 23): ";
+//         cin >> h;
+//         if (h > 23)
+//             return (1);
+//         cout << "    Minutes: ";
+//         cin >> m;
+//         cout << "    Seconds: ";
+//         cin >> s;
+
+//         time24 t24(h, m, s);
+//         cout << "You entered: ";
+//         t24.display();
+
+//         time12 t12 = t24;
+
+//         cout << "\n12-hour time: ";
+//         t12.display();
+//         cout << "\n\n";
+//     }
+
+//     return 0;
+// }
+
+class time24
+{
+private:
+    int hours;
+    int minutes;
+    int seconds;
+
+public:
+    time24() : hours(0), minutes(0), seconds(0) {}
+    time24(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
+    void display() const // format: 23:15:01
+    {
+        if (hours < 10)
+            cout << '0';
+        cout << hours << ':';
+        if (minutes < 10)
+            cout << '0';
+        cout << minutes << ':';
+        if (seconds < 10)
+            cout << '0';
+        cout << seconds;
+    }
+    int getHrs() const { return hours; }
+    int getMins() const { return minutes; }
+    int getSecs() const { return seconds; }
+};
+
+class time12
+{
+private:
+    bool pm;
+    int hrs;
+    int mins;
+
+public:
+    time12() : pm(true), hrs(0), mins(0) {}
+    time12(bool ap, int h, int m) : pm(ap), hrs(h), mins(m) {}
+    time12(time24);
+    void display() const
+    {
+        cout << hrs << ':';
+        if (mins < 10)
+            cout << '0';
+        cout << mins << ' ';
+        string am_pm = pm ? "p.m." : "a.m.";
+        cout << am_pm;
+    }
+};
+
+time12::time12(time24 t24)
+{
+    int hrs24 = t24.getHrs();
+    pm = t24.getHrs() < 12 ? false : true;
+
+    mins = (t24.getSecs() < 30) ? t24.getMins() : t24.getMins() + 1;
+    if (mins == 60)
+    {
+        mins = 0;
+        ++hrs24;
+        if (hrs24 == 12 || hrs24 == 24)
+            pm = (pm == true) ? false : true;
+    }
+    hrs = (hrs24 < 13) ? hrs24 : hrs24 - 12;
+    if (hrs == 0)
+    {
+        hrs = 12;
+        pm = false;
+    }
+}
+
+int main(void)
+{
+    int h, m, s;
+    while (true)
+    {
+        cout << "Enter 24-hour time: \n";
+        cout << "    Hours (0 to 23): ";
+        cin >> h;
+        if (h > 23)
+            return (1);
+        cout << "    Minutes: ";
+        cin >> m;
+        cout << "    Seconds: ";
+        cin >> s;
+
+        time24 t24(h, m, s);
+        cout << "You entered: ";
+        t24.display();
+
+        time12 t12 = t24;
+
+        cout << "\n12-hour time: ";
+        t12.display();
+        cout << "\n\n";
+    }
+
+    return 0;
+}
