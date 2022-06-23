@@ -534,3 +534,120 @@ using namespace std;
 //     }
 //     return 0;
 // }
+
+// Data conversion
+// class Distance
+// {
+// private:
+//     const float MTF;
+//     int feet;
+//     float inches;
+
+// public:
+//     Distance() : feet(0), inches(0.0), MTF(3.280833F)
+//     {
+//     } // constructor (two args)
+//     Distance(float meters) : MTF(3.280833F)
+//     {
+//         float fltfeet = MTF * meters;
+//         feet = int(fltfeet);
+//         inches = 12 * (fltfeet - feet);
+//     }
+//     Distance(int ft, float in) : feet(ft), inches(in), MTF(3.280833F) {}
+//     void getdist() // get length from user
+//     {
+//         cout << "\nEnter feet : ";
+//         cin >> feet;
+//         cout << "Enter inches : ";
+//         cin >> inches;
+//     }
+//     void showdist() const // display distance
+//     {
+//         cout << feet << "\'-" << inches << '\"';
+//     }
+//     operator float() const
+//     {
+//         float fracfeet = inches / 12;
+//         fracfeet += static_cast<float>(feet);
+//         return fracfeet / MTF;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     float mtrs;
+//     Distance dist1 = 2.35F;
+//     cout << "\ndist 1 = ";dist1.showdist();
+//     mtrs = static_cast<float>(dist1);
+//     cout << "\ndist1 = "<<mtrs <<"d";
+//     return 0;
+// }
+// conversions between objects and Basic types
+// class Distance
+// {
+// private:
+//     const float MTF;
+//     int feet;
+//     float inches;
+
+// public:
+//     Distance() : feet(0), inches(0.0), MTF(3.280833F) {} // constructor (one arg)
+//     Distance(float meters) : MTF(3.280833F)
+//     {
+//         float fltfeet = MTF * meters;
+//         feet = int(fltfeet);
+//         inches = 12 * (fltfeet - feet);
+//     }
+//     Distance(int ft, float in) : feet(ft), inches(in), MTF(3.280833F) {}
+//     void getdist()
+//     {
+//         cout << "\nEnter feet: ";
+//         cin >> feet;
+//         cout << "Enter inches: ";
+//         cin >> inches;
+//     }
+//     void showdist() const // display distance
+//     {
+//         cout << feet << "\'-" << inches << '\"';
+//     }
+//     operator float() const                    // conversion operator
+//     {                                         // converts Distance to meters
+//         float fracfeet = inches / 12;         // convert the inches
+//         fracfeet += static_cast<float>(feet); // add the feet
+//         return fracfeet / MTF;                // convert to meters
+//     }
+// };
+
+// int main()
+// {
+//     float mtrs;
+//     Distance dist1 = Distance(2.35F); // uses 1-arg constructor to
+//     // convert meters to Distance
+//     cout << "\ndist1 = ";
+//     dist1.showdist();
+//     mtrs = static_cast<float>(dist1); // uses conversion operator
+//     // for Distance to meters
+//     cout << "\ndist1 = " << mtrs << " meters\n";
+//     Distance dist2(5, 10.25); // uses 2-arg constructor
+//     mtrs = dist2;             // also uses conversion op
+//     cout << "\ndist2 = " << mtrs << " meters\n";
+//     // dist2 = mtrs; //error, = won’t convert
+//     return 0;
+// }
+
+// Conversion between c-strings and string objects
+
+Class String 
+{
+    private:
+    enum {SZ = 80};
+    char str[SZ];
+    public:
+    String(){str[0]= '\0';}
+    String(char s[])
+    {strcpy(str,s);}
+    void display()const
+    {cout << str;}
+    operator char*()   //conversion operator
+    {return str;}
+};
