@@ -263,7 +263,7 @@ using namespace std;
 // public:
 //     time() : hours(0), minutes(0), seconds(0) {}
 //     time(int h, int m, int s) : hours(h), minutes(m), seconds(s){};
-//     void display()
+//     fraction display()
 //     {
 //         cout << hours << ":" << minutes << ":" << seconds << endl;
 //     }
@@ -333,76 +333,222 @@ using namespace std;
 //     return 0;
 // }
 
-class time
-{
-private:
-    int hours;
-    int minutes;
-    int seconds;
+// class time
+// {
+// private:
+//     int hours;
+//     int minutes;
+//     int seconds;
 
-public:
-    time() : hours(0), minutes(0), seconds(0) {}
-    time(int h, int m, int s) : hours(h), minutes(m), seconds(s){};
-    void display()
-    {
-        cout << "Overloading Successful - " << hours << ":" << minutes << ":" << seconds << endl;
-    }
-    time operator+(const time &) const;
-    time operator-(const time &) const;
-};
-time time::operator+(const time &b) const
-{
-    time temp;
-    temp.seconds = seconds + b.seconds;
-    temp.minutes = minutes + b.minutes;
-    temp.hours = hours + b.hours;
-    if ((temp.seconds / 60) > 0)
-    {
-        temp.minutes += (temp.seconds / 60);
-        temp.seconds %= 60;
-    }
-    if ((temp.minutes / 60) > 0)
-    {
-        temp.hours += (temp.minutes / 60);
-        temp.minutes %= 60;
-    }
-    return temp;
-}
-time time::operator-(const time &b) const
-{
-    time temp;
-    temp.seconds = seconds - b.seconds;
-    temp.minutes = minutes - b.minutes;
-    temp.hours = hours - b.hours;
-    if (temp.seconds < 0)
-    {
-        temp.seconds += 60;
-        --temp.minutes;
-    }
-    if (temp.minutes < 0)
-    {
-        temp.minutes += 60;
-        --temp.hours;
-    }
-    if ((temp.seconds / 60) > 0)
-    {
-        temp.minutes += (temp.seconds / 60);
-        temp.seconds %= 60;
-    }
-    if ((temp.minutes / 60) > 0)
-    {
-        temp.hours += (temp.minutes / 60);
-        temp.minutes %= 60;
-    }
-    return temp;
-}
+// public:
+//     time() : hours(0), minutes(0), seconds(0) {}
+//     time(int h, int m, int s) : hours(h), minutes(m), seconds(s){};
+//     fraction display()
+//     {
+//         cout << "Overloading Successful - " << hours << ":" << minutes << ":" << seconds << endl;
+//     }
+//     time operator+(const time &) const;
+//     time operator-(const time &) const;
+// };
+// time time::operator+(const time &b) const
+// {
+//     time temp;
+//     temp.seconds = seconds + b.seconds;
+//     temp.minutes = minutes + b.minutes;
+//     temp.hours = hours + b.hours;
+//     if ((temp.seconds / 60) > 0)
+//     {
+//         temp.minutes += (temp.seconds / 60);
+//         temp.seconds %= 60;
+//     }
+//     if ((temp.minutes / 60) > 0)
+//     {
+//         temp.hours += (temp.minutes / 60);
+//         temp.minutes %= 60;
+//     }
+//     return temp;
+// }
+// time time::operator-(const time &b) const
+// {
+//     time temp;
+//     temp.seconds = seconds - b.seconds;
+//     temp.minutes = minutes - b.minutes;
+//     temp.hours = hours - b.hours;
+//     if (temp.seconds < 0)
+//     {
+//         temp.seconds += 60;
+//         --temp.minutes;
+//     }
+//     if (temp.minutes < 0)
+//     {
+//         temp.minutes += 60;
+//         --temp.hours;
+//     }
+//     if ((temp.seconds / 60) > 0)
+//     {
+//         temp.minutes += (temp.seconds / 60);
+//         temp.seconds %= 60;
+//     }
+//     if ((temp.minutes / 60) > 0)
+//     {
+//         temp.hours += (temp.minutes / 60);
+//         temp.minutes %= 60;
+//     }
+//     return temp;
+// }
 
-int main(int argc, char const *argv[])
-{
-    time t1(2, 13, 45), t2(3, 2, 23), t3;
-    t1.display();
-    t2.display();
-    t3 = t2 - t1;
-    t3.display();
-    return 0;
-}
+// int main(int argc, char const *argv[])
+// {
+//     time t1(2, 13, 45), t2(3, 2, 23), t3;
+//     t1.display();
+//     t2.display();
+//     t3 = t2 - t1;
+//     t3.display();
+//     return 0;
+// }
+
+// class fraction
+// {
+// private:
+//     float num;
+//     char op;
+//     float deno;
+
+// public:
+//     fraction() : num(0.0), op('/'), deno(0.0) {}
+//     void getfract()
+//     {
+//         cin >> num >> op >> deno;
+//     }
+//     void dispfract()
+//     {
+//         cout << "The result is " << num << "/" << deno << endl;
+//     }
+//     fraction operator+(fraction &b);
+//     void swap(fraction &b);
+//     fraction operator*(fraction &b);
+//     fraction operator/(fraction &b);
+//     fraction operator-(fraction &b);
+//     void lowterms();
+// };
+// void fraction::swap(fraction &b)
+// {
+//     float temp;
+//     temp = b.num;
+//     b.num = b.deno;
+//     b.deno = temp;
+// }
+
+// fraction fraction::operator+(fraction &b)
+// {
+//     fraction temp;
+//     temp.num = (num * b.deno) + (b.num * deno);
+//     temp.deno = deno * b.deno;
+//     lowterms();
+//     return temp;
+// }
+
+// fraction fraction::operator*(fraction &b)
+// {
+//     fraction temp;
+//     temp.num = (num * b.num);
+//     temp.deno = deno * b.deno;
+//     lowterms();
+//     return temp;
+// }
+
+// fraction fraction::operator/(fraction &b)
+// {
+//     swap(b);
+//     fraction temp;
+//     if ((deno == 0) || (b.deno == 0))
+//     {
+//         cout << "Zero division error spotted";
+//     }
+//     else
+//     {
+//         temp.num = (num * b.num);
+//         temp.deno = deno * b.deno;
+//         lowterms();
+//     }
+//     return temp;
+// }
+
+// fraction fraction::operator-(fraction &b)
+// {
+//     num = (num * b.deno) - (b.num * deno);
+//     deno = deno * b.deno;
+//     lowterms();
+//     cout << "The subtraction of the fraction is: " << num << "/" << deno;
+// }
+// void fraction::lowterms() // change ourself to lowest terms
+// {
+//     long tnum, tden, temp, gcd;
+//     tnum = labs(num);  // use non-negative copies
+//     tden = labs(deno); // (needs cmath)
+//     if (tden == 0)     // check for n/0
+//     {
+//         cout << "Illegal fraction : division by 0";
+//         exit(1);
+//     }
+//     else if (tnum == 0) // check for 0/n
+//     {
+//         num = 0;
+//         deno = 1;
+//         return;
+//     }
+//     // this 'while' loop finds the gcd of tnum and tden
+//     while (tnum != 0)
+//     {
+//         if (tnum < tden) // ensure numerator larger
+//         {
+//             temp = tnum;
+//             tnum = tden;
+//             tden = temp;
+//         }                   // swap them
+//         tnum = tnum - tden; // subtract them
+//     }
+//     gcd = tden;        // this is greatest common divisor
+//     num = num / gcd;   // divide both num and den by gcd
+//     deno = deno / gcd; // to reduce frac to lowest terms
+// }
+
+// int main(void)
+// {
+//     fraction a1, a2, a3;
+//     char b;
+//     char y = 'y';
+//     while (y == 'y')
+//     {
+//         cout << "Enter your the fractions and their operators: ";
+//         a1.getfract();
+//         cin >> b;
+//         a2.getfract();
+//         switch (b)
+//         {
+//         case '+':
+//             a3 = a1 + a2;
+//             a3.dispfract();
+//             break;
+//         case '-':
+//             a3 = a1 - a2;
+//             a3.dispfract();
+//             break;
+//         case '*':
+//             a3 = a1 * a2;
+//             break;
+//         case '/':
+//             a3 = a1 / a2;
+//             a3.dispfract();
+//             break;
+//         default:
+//             cout << "Invalid operator specified" << endl;
+//             break;
+//         }
+//         cout << "\nDo you still want to perform anymore operations? ";
+//         cin >> y;
+//     }
+//     return 0;
+// }
+
+
