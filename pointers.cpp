@@ -69,4 +69,38 @@ using namespace std;
 //     return 0;
 // }
 
-// Pointers to objects 
+// Pointers to objects
+class Distance
+{
+private:
+    int feet;
+    float inches;
+
+public:
+    Distance() : feet(0), inches(0.0) {}
+    void getdist()
+    {
+        cout << "\nEnter feet: ";
+        cin >> feet;
+        cout << "Enter inches: ";
+        cin >> inches;
+    }
+    void showdist()
+    {
+        cout << feet << "\'-" << inches << '\"' << endl;
+    }
+};
+
+int main(int argc, char const *argv[])
+{
+    Distance dist;
+    dist.getdist();
+
+    Distance *distptr;
+    distptr = new Distance;
+    distptr->getdist();
+    dist.showdist();
+    distptr->showdist();
+    delete distptr;
+    return 0;
+}
