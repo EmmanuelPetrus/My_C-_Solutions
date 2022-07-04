@@ -70,37 +70,83 @@ using namespace std;
 // }
 
 // Pointers to objects
-class Distance
+// class Distance
+// {
+// private:
+//     int feet;
+//     float inches;
+
+// public:
+//     Distance() : feet(0), inches(0.0) {}
+//     void getdist()
+//     {
+//         cout << "\nEnter feet: ";
+//         cin >> feet;
+//         cout << "Enter inches: ";
+//         cin >> inches;
+//     }
+//     void showdist()
+//     {
+//         cout << feet << "\'-" << inches << '\"' << endl;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     Distance dist;
+//     dist.getdist();
+
+//     Distance *distptr;
+//     distptr = new Distance;
+//     distptr->getdist();
+//     dist.showdist();
+//     distptr->showdist();
+//     delete distptr;
+//     return 0;
+// }
+
+class Person
 {
-private:
-    int feet;
-    float inches;
+protected:
+    char name[40];
 
 public:
-    Distance() : feet(0), inches(0.0) {}
-    void getdist()
+    void setName()
     {
-        cout << "\nEnter feet: ";
-        cin >> feet;
-        cout << "Enter inches: ";
-        cin >> inches;
+        cout << "Enter name: ";
+        cin >> name;
     }
-    void showdist()
+    void printName()
     {
-        cout << feet << "\'-" << inches << '\"' << endl;
+        cout << "\n   Name is: " << name;
     }
+    // virtual String() { cout << "Destroyed" << endl; }
 };
 
 int main(int argc, char const *argv[])
 {
-    Distance dist;
-    dist.getdist();
+    Person *perPtr[100];
+    int n = 0;
+    char choice;
+    do
+    {
+        perPtr[n] = new Person;
+        perPtr[n]->setName();
+        n++;
+        cout << "Enter another (y/n)? ";
+        cin >> choice;
+    } while (choice == 'y');
 
-    Distance *distptr;
-    distptr = new Distance;
-    distptr->getdist();
-    dist.showdist();
-    distptr->showdist();
-    delete distptr;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nPerson number " << i + 1;
+        perPtr[i]->printName();
+    }
+    cout << endl;
+    for (size_t i = 0; i < n; i++)
+    {
+        delete perPtr[i];
+    }
+
     return 0;
 }
