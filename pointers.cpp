@@ -105,10 +105,103 @@ using namespace std;
 //     return 0;
 // }
 
+// class Person
+// {
+// protected:
+//     char name[40];
+
+// public:
+//     void setName()
+//     {
+//         cout << "Enter name: ";
+//         cin >> name;
+//     }
+//     void printName()
+//     {
+//         cout << "\n   Name is: " << name;
+//     }
+//     // virtual String() { cout << "Destroyed" << endl; }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+// //     Person *perPtr[100];
+//     int n = 0;
+//     char choice;
+//     do
+//     {
+//         perPtr[n] = new Person;
+//         perPtr[n]->setName();
+//         n++;
+//         cout << "Enter another (y/n)? ";
+//         cin >> choice;
+//     } while (choice == 'y');
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << "\nPerson number " << i + 1;
+//         perPtr[i]->printName();
+//     }
+//     cout << endl;
+//     for (size_t i = 0; i < n; i++)
+//     {
+//         delete perPtr[i];
+//     }
+
+//     return 0;
+// }
+
+// struct link
+// {
+//     int data;
+//     link *next;
+// };
+
+// class Linklist
+// {
+// private:
+//     link *first;
+
+// public:
+//     Linklist() { first = nullptr; }
+//     void additem(int d);
+//     void display();
+// };
+
+// void Linklist::additem(int d)
+// {
+//     link *newlink = new link;
+//     newlink->data = d;
+//     newlink->next = first;
+//     first = newlink;
+// }
+
+// void Linklist::display()
+// {
+//     link *current = first;
+//     while (current != NULL)
+//     {
+//         cout << current->data << endl;
+//         current = current->next;
+//     }
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     Linklist li;
+
+//     li.additem(25);
+//     li.additem(36);
+//     li.additem(49);
+//     li.additem(68);
+//     li.display();
+//     return 0;
+// }
+
 class Person
 {
 protected:
-    char name[40];
+    string name;
 
 public:
     void setName()
@@ -118,35 +211,61 @@ public:
     }
     void printName()
     {
-        cout << "\n   Name is: " << name;
+        cout << endl
+             << name;
     }
-    // virtual String() { cout << "Destroyed" << endl; }
+    string getName() { return name; }
 };
 
 int main(int argc, char const *argv[])
 {
-    Person *perPtr[100];
+    void bsort(Person **, int);
+    Person *persPtr[100];
     int n = 0;
     char choice;
+
     do
     {
-        perPtr[n] = new Person;
-        perPtr[n]->setName();
+        persPtr[n] = new Person;
+        persPtr[n]->setName();
         n++;
         cout << "Enter another (y/n)? ";
         cin >> choice;
     } while (choice == 'y');
 
+    cout << "\nUnsorted list:";
+    for (int j = 0; j < n; j++)
+    {
+        persPtr[j]->printName();
+    }
+    bsort(persPtr, n);
+
+    cout << "\nSorted list:";
     for (int i = 0; i < n; i++)
     {
-        cout << "\nPerson number " << i + 1;
-        perPtr[i]->printName();
+        persPtr[i]->printName();
     }
     cout << endl;
-    for (size_t i = 0; i < n; i++)
-    {
-        delete perPtr[i];
-    }
-
     return 0;
+}
+
+void bsort(Person **pp, int n)
+{
+    void order(Person **, Person **);
+    int j, k;
+    for (j = 0; j < n - 1; j++)
+
+        for (k = j + 1; k < n; k++)
+
+            order(pp + j, pp + k);
+}
+
+void order(Person **pp1, Person **pp2)
+{
+    if ((*pp1)->getName() > (*pp2)->getName())
+    {
+        Person *tempstr = *pp1;
+        *pp1 = *pp2;
+        *pp2 = tempstr;
+    }
 }
