@@ -198,74 +198,216 @@ using namespace std;
 //     return 0;
 // }
 
-class Person
+// class Person
+// {
+// protected:
+//     string name;
+
+// public:
+//     void setName()
+//     {
+//         cout << "Enter name: ";
+//         cin >> name;
+//     }
+//     void printName()
+//     {
+//         cout << endl
+//              << name;
+//     }
+//     string getName() { return name; }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     void bsort(Person **, int);
+//     Person *persPtr[100];
+//     int n = 0;
+//     char choice;
+
+//     do
+//     {
+//         persPtr[n] = new Person;
+//         persPtr[n]->setName();
+//         n++;
+//         cout << "Enter another (y/n)? ";
+//         cin >> choice;
+//     } while (choice == 'y');
+
+//     cout << "\nUnsorted list:";
+//     for (int j = 0; j < n; j++)
+//     {
+//         persPtr[j]->printName();
+//     }
+//     bsort(persPtr, n);
+
+//     cout << "\nSorted list:";
+//     for (int i = 0; i < n; i++)
+//     {
+//         persPtr[i]->printName();
+//     }
+//     cout << endl;
+//     return 0;
+// }
+
+// void bsort(Person **pp, int n)
+// {
+//     void order(Person **, Person **);
+//     int j, k;
+//     for (j = 0; j < n - 1; j++)
+
+//         for (k = j + 1; k < n; k++)
+
+//             order(pp + j, pp + k);
+// }
+
+// void order(Person **pp1, Person **pp2)
+// {
+//     if ((*pp1)->getName() > (*pp2)->getName())
+//     {
+//         Person *tempstr = *pp1;
+//         *pp1 = *pp2;
+//         *pp2 = tempstr;
+//     }
+// }
+
+const int LEN = 80;
+const int MAX = 40;
+
+class Stack
 {
-protected:
-    string name;
+private:
+    char st[MAX];
+    int top;
 
 public:
-    void setName()
+    Stack() { top = 0; }
+    void push(char var)
     {
-        cout << "Enter name: ";
-        cin >> name;
+        st[++top] = var;
     }
-    void printName()
-    {
-        cout << endl
-             << name;
-    }
-    string getName() { return name; }
+    char pop() { return st[top--]; }
+    int gettop() { return top; }
 };
+
+class Express
+{
+private:
+    Stack s;
+    char *pStr;
+    int len;
+
+public:
+    Express(char *ptr)
+    {
+        pStr = ptr;
+        len = strlen(pStr);
+    };
+    void parse();
+    int solve();
+};
+void Express::parse()
+{
+    char ch;
+    char lastval;
+    char lastop;
+    for (int j = 0; j < len; j++)
+    {
+        ch = pStr[j];
+        if (ch >= '0' && ch <= '9')
+            s.push(ch - '0');
+
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
+        {
+            if (s.gettop() == 1)
+                s.push(ch);
+
+            else
+            {
+                lastval = s.pop();
+                lastop = s.pop();
+                if ((ch == '*' || ch == '/') && (lastop == '+' || lastop == '-'))
+                {
+                    s.push(lastop);
+                    s.push(lastval);
+                }
+                else
+                {
+                    switch (lastop)
+                    {
+                    case '+':
+                        s.push(s.pop() + lastval);
+                        break;
+                    case '-':
+                        s.push(s.pop() - lastval);
+                        break;
+                    case '*':
+                        s.push(s.pop() * lastval);
+                        break;
+                    case '/':
+                        s.push(s.pop() / lastval);
+                        break;
+                    default:
+                        cout << "\nUnknown operand";
+                        exit(1);
+                    }
+                }
+            s.push(ch);
+            }
+        }
+        else
+        {
+            cout << "\nUnknown input character";
+            exit(1);
+        }
+    }
+}
+
+int Express::solve()
+{
+    char lastval;
+    while (s.gettop() > 1)
+    {
+        lastval = s.pop();
+        switch (s.pop())
+        {
+        case '+':
+            s.push(s.pop() + lastval);
+            break;
+        case '-':
+            s.push(s.pop() - lastval);
+            break;
+        case '*':
+            s.push(s.pop() * lastval);
+            break;
+        case '/':
+            s.push(s.pop() / lastval);
+            break;
+        default:
+            cout << "\nUnknown operator";
+            exit(1);
+        }
+    }
+    return static_cast<int>(s.pop());
+}
 
 int main(int argc, char const *argv[])
 {
-    void bsort(Person **, int);
-    Person *persPtr[100];
-    int n = 0;
-    char choice;
-
+    char ans;
+    char string[LEN];
+    cout << "\nEnter an arithmetic expression"
+            "\nof the form 2 + 3 * 4 / 3 - 2."
+            "\nNo number may have more than one digit."
+            "\nDon't use any spaces or parentheses.";
     do
     {
-        persPtr[n] = new Person;
-        persPtr[n]->setName();
-        n++;
-        cout << "Enter another (y/n)? ";
-        cin >> choice;
-    } while (choice == 'y');
+        cout << "\nEnter expression: ";
+        cin >> string;
+        Express *eptr = new Express(string);
+        eptr->parse();
+        cout << "\nThe numerical value is: " << eptr->solve();
+        cout << "\nDo another (Enter y or n)? ";
+        cin >> ans;
+    } while (ans == 'y');
 
-    cout << "\nUnsorted list:";
-    for (int j = 0; j < n; j++)
-    {
-        persPtr[j]->printName();
-    }
-    bsort(persPtr, n);
-
-    cout << "\nSorted list:";
-    for (int i = 0; i < n; i++)
-    {
-        persPtr[i]->printName();
-    }
-    cout << endl;
     return 0;
-}
-
-void bsort(Person **pp, int n)
-{
-    void order(Person **, Person **);
-    int j, k;
-    for (j = 0; j < n - 1; j++)
-
-        for (k = j + 1; k < n; k++)
-
-            order(pp + j, pp + k);
-}
-
-void order(Person **pp1, Person **pp2)
-{
-    if ((*pp1)->getName() > (*pp2)->getName())
-    {
-        Person *tempstr = *pp1;
-        *pp1 = *pp2;
-        *pp2 = tempstr;
-    }
 }
