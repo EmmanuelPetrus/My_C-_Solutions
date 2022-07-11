@@ -356,109 +356,109 @@ using namespace std;
 //     return 0;
 // }
 
-// class fraction
-// {
-// private:
-//     float num;
-//     char op;
-//     float deno;
+class fraction
+{
+private:
+    float num;
+    char op;
+    float deno;
 
-// public:
-//     fraction() : num(0.0), op('/'), deno(0.0) {}
-//     void getfract()
-//     {
-//         cin >> num >> op >> deno;
-//     }
-//     void fadd(fraction &b);
-//     void swap(fraction &b);
-//     void fmul(fraction &b);
-//     void fdiv(fraction &b);
-//     void fsub(fraction &b);
-//     void lowterms();
-// };
-// void fraction::swap(fraction &b)
-// {
-//     float temp;
-//     temp = b.num;
-//     b.num = b.deno;
-//     b.deno = temp;
-// }
+public:
+    fraction() : num(0.0), op('/'), deno(0.0) {}
+    void getfract()
+    {
+        cin >> num >> op >> deno;
+    }
+    void fadd(fraction &b);
+    void swap(fraction &b);
+    void fmul(fraction &b);
+    void fdiv(fraction &b);
+    void fsub(fraction &b);
+    void lowterms();
+};
+void fraction::swap(fraction &b)
+{
+    float temp;
+    temp = b.num;
+    b.num = b.deno;
+    b.deno = temp;
+}
 
-// void fraction::fadd(fraction &b)
-// {
+void fraction::fadd(fraction &b)
+{
 
-//     num = (num * b.deno) + (b.num * deno);
-//     deno = deno * b.deno;
-//     lowterms();
-//     cout << "The addition of the fraction is: " << num << "/" << deno;
-// }
+    num = (num * b.deno) + (b.num * deno);
+    deno = deno * b.deno;
+    lowterms();
+    cout << "The addition of the fraction is: " << num << "/" << deno;
+}
 
-// void fraction::fmul(fraction &b)
-// {
-//     num = (num * b.num);
-//     deno = deno * b.deno;
-//     lowterms();
-//     cout << "The multiplication of the fraction is: " << num << "/" << deno;
-// }
+void fraction::fmul(fraction &b)
+{
+    num = (num * b.num);
+    deno = deno * b.deno;
+    lowterms();
+    cout << "The multiplication of the fraction is: " << num << "/" << deno;
+}
 
-// void fraction::fdiv(fraction &b)
-// {
-//     swap(b);
-//     if ((deno == 0) || (b.deno == 0))
-// {
-//         cout << "Zero division error spotted";
-//     }
-//     else
-//     {
-//         num = (num * b.num);
-//         deno = deno * b.deno;
-//         lowterms();
-//         cout << "The division of the fraction is: " << num << "/" << deno;
-//     }
-// }
+void fraction::fdiv(fraction &b)
+{
+    swap(b);
+    if ((deno == 0) || (b.deno == 0))
+{
+        cout << "Zero division error spotted";
+    }
+    else
+    {
+        num = (num * b.num);
+        deno = deno * b.deno;
+        lowterms();
+        cout << "The division of the fraction is: " << num << "/" << deno;
+    }
+}
 
-// void fraction::fsub(fraction &b)
-// {
-//     num = (num * b.deno) - (b.num * deno);
-//     deno = deno * b.deno;
-//     lowterms();
-//     cout << "The subtraction of the fraction is: " << num << "/" << deno;
-// }
-// void fraction::lowterms() // change ourself to lowest terms
-// {
-//     long tnum, tden, temp, gcd;
-//     tnum = labs(num);  // use non-negative copies
-//     tden = labs(deno); // (needs cmath)
-//     if (tden == 0)     // check for n/0
-//     {
-//         cout << "Illegal fraction : division by 0";
-//         exit(1);
-//     }
-//     else if (tnum == 0) // check for 0/n
-//     {
-//         num = 0;
-//         deno = 1;
-//     return;
-// }
+void fraction::fsub(fraction &b)
+{
+    num = (num * b.deno) - (b.num * deno);
+    deno = deno * b.deno;
+    lowterms();
+    cout << "The subtraction of the fraction is: " << num << "/" << deno;
+}
+void fraction::lowterms() // change ourself to lowest terms
+{
+    long tnum, tden, temp, gcd;
+    tnum = labs(num);  // use non-negative copies
+    tden = labs(deno); // (needs cmath)
+    if (tden == 0)     // check for n/0
+    {
+        cout << "Illegal fraction : division by 0";
+        exit(1);
+    }
+    else if (tnum == 0) // check for 0/n
+    {
+        num = 0;
+        deno = 1;
+    return;
+}
 // this 'while' loop finds the gcd of tnum and tden
-// while (tnum != 0)
-// {
-//     if (tnum < tden) // ensure numerator larger
-//     {
-//         temp = tnum;
-//         tnum = tden;
-//         tden = temp;
-//     }                   // swap them
-//     tnum = tnum - tden; // subtract them
-// }
-// gcd = tden;        // this is greatest common divisor
-// num = num / gcd;   // divide both num and den by gcd
-// deno = deno / gcd; // to reduce frac to lowest terms
-// }
-// int main(void)
-// {
-//     fraction a1, a2;
-//     char b;
+while (tnum != 0)
+{
+    if (tnum < tden) // ensure numerator larger
+    {
+        temp = tnum;
+        tnum = tden;
+        tden = temp;
+    }                   // swap them
+    tnum = tnum - tden; // subtract them
+}
+gcd = tden;        // this is greatest common divisor
+num = num / gcd;   // divide both num and den by gcd
+deno = deno / gcd; // to reduce frac to lowest terms
+}
+int main(void)
+{
+    fraction a1, a2;
+    char b;
 //     char y = 'y';
 //     while (y == 'y')
 //     {
@@ -578,3 +578,4 @@ using namespace std;
 //         }
 //     }
 // }
+
