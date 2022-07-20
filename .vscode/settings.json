@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "iomanip": "cpp",
+        "ostream": "cpp",
+        "*.tcc": "cpp",
+        "cstdlib": "cpp",
+        "numeric": "cpp",
+        "clocale": "c",
+        "string": "cpp",
+        "cstring": "cpp",
+        "istream": "cpp",
+        "random": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
+}
