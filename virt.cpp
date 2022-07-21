@@ -163,9 +163,201 @@ using namespace std;
 //     return 0;
 // }
 
+// Friend functions
+// class Beta;
+// class Alpha
+// {
+// private:
+//     int data;
 
+// public:
+//     Alpha() : data(3) {}
+//     friend int frifunc(Alpha, Beta);
+// };
 
+// class Beta
+// {
+// private:
+//     int data;
 
+// public:
+//     Beta() : data(7) {}
+//     friend int frifunc(Alpha, Beta);
+// };
 
+// int frifunc(Alpha a, Beta b)
+// {
+//     return (a.data + b.data);
+// }
 
+// int main(int argc, char const *argv[])
+// {
+//     Alpha aa;
+//     Beta bb;
+//     cout << frifunc(aa, bb) << endl;
+//     return 0;
+// }
 
+// class Distance
+// {
+// private:
+//     int feet;
+//     float inches;
+
+// public:
+//     Distance() : feet(0), inches(0.0) {}
+//     Distance(float fltfeet)
+//     {
+//         feet = static_cast<int>(fltfeet);
+//         inches = 12 * (fltfeet - feet);
+//     }
+//     Distance(int ft, float in)
+//     {
+//         feet = ft;
+//         inches = in;
+//     }
+//     void showdist() { cout << feet << "\'-" << inches << '\"'; }
+//     // Distance operator+(Distance);
+//     friend Distance operator+(Distance d1, Distance d2)
+//     {
+//         int f = d1.feet + d2.feet;
+//         float i = d1.inches + d2.inches;
+//         if (i >= 12.0)
+//         {
+//             i -= 12.0;
+//             f++;
+//         }
+//         return Distance(f, i);
+//     }
+// };
+
+// Distance Distance::operator+(Distance d2)
+// {
+// int f = feet + d2.feet;
+// float i = inches + d2.inches;
+// if (i >= 12.0)
+// {
+//     i -= 12.0;
+//     f++;
+// }
+// return Distance(f, i);
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     Distance d1 = 2.5;
+//     Distance d2 = 1.25;
+//     Distance d3;
+//     cout << "\nd1 = ";
+//     d1.showdist();
+//     cout << "\nd2 = ";
+//     d2.showdist();
+//     d3 = d1 + 10.0;
+//     cout << "\nd3 = ";
+//     d3.showdist();
+//     d3 = 10.0 + d1;
+//     cout << "\nd3 = ";
+//     d3.showdist();
+//     return 0;
+// }
+
+// experimenting with a string class
+// #include <cstring>
+// class StrCount
+// {
+// private:
+//     int count;
+//     char *str;
+//     friend class String;
+//     StrCount(char *s)
+//     {
+//         int length = strlen(s);
+//         str = new char[length + 1];
+//         strcpy(str, s);
+//         count = 1;
+//     }
+//     ~StrCount()
+//     {
+//         delete[] str;
+//     }
+// };
+
+// class String
+// {
+// private:
+//     StrCount *psc;
+//     char k[5] = "NULL";
+
+// public:
+//     String() { psc = new StrCount(k); }
+//     String(char *s)
+//     {
+//         psc = new StrCount(s);
+//     }
+//     String(String &S)
+//     {
+//         psc = S.psc;
+//         (psc->count)++;
+//     }
+//     ~String()
+//     {
+//         if (psc->count == 1)
+//             delete psc;
+//         else
+//             (psc->count)--;
+//     }
+//     void display()
+//     {
+//         cout << psc->str;
+//         cout << " (addr=" << psc << ")";
+//     }
+//     void operator=(String &S)
+//     {
+//         if (psc->count == 1)
+//             delete psc;
+//         else
+//             (psc->count)--;
+//         psc = S.psc;
+//         (psc->count)++;
+//     }
+// };
+
+// int main()
+// {
+//     char m[] = "When the fox preaches, look to your geese.";
+//     String s3(m);
+//     cout << "\ns3=";
+//     s3.display();
+
+//     String s1;
+//     s1 = s3;
+//     cout << "\ns1=";
+//     s1.display();
+//     String s2(s3);
+//     cout << "\ns2=";
+//     s2.display();
+//     cout << endl;
+//     return 0;
+// }
+
+class Where
+{
+private:
+    char charray[10];
+
+public:
+    void reveal()
+    {
+        cout << "\nMy object's address is " << this;
+    }
+};
+
+int main(int argc, char const *argv[])
+{
+    Where w1, w2, w3;
+    w1.reveal();
+    w2.reveal();
+    w3.reveal();
+    cout << endl;
+    return 0;
+}
