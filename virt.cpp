@@ -340,7 +340,84 @@ using namespace std;
 //     return 0;
 // }
 
-class Where
+// class Where
+// {
+// private:
+//     char charray[10];
+
+// public:
+//     void reveal()
+//     {
+//         cout << "\nMy object's address is " << this;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     Where w1, w2, w3;
+//     w1.reveal();
+//     w2.reveal();
+//     w3.reveal();
+//     cout << endl;
+//     return 0;
+// }
+
+// class What
+// {
+// private:
+//     int alpha;
+
+// public:
+//     void tester()
+//     {
+//         this->alpha = 11;
+//         cout << this->alpha;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     What w;
+//     w.tester();
+//     cout << endl;
+//     return 0;
+// }
+
+// class Alpha
+// {
+// private:
+//     int data;
+
+// public:
+//     Alpha() : data(0) {}
+//     Alpha(int d) { data = d; }
+//     void display()
+//     {
+//         cout << data;
+//     }
+//     Alpha &operator=(Alpha &a)
+//     {
+//         data = a.data;
+//         cout << "\nAssignment operator invoked";
+//         // return *this;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     Alpha a1(37);
+//     Alpha a2, a3;
+
+//     a3 = a2 = a1;
+//     cout << "\na2=";
+//     a2.display();
+//     cout << "\na3=";
+//     a3.display();
+//     cout << endl;
+//     return 0;
+// }
+
+class where
 {
 private:
     char charray[10];
@@ -354,7 +431,7 @@ public:
 
 int main(int argc, char const *argv[])
 {
-    Where w1, w2, w3;
+    where w1, w2, w3;
     w1.reveal();
     w2.reveal();
     w3.reveal();
