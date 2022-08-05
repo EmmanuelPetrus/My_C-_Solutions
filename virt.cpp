@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include <cstring>
 #include <msoftcon/msoftcon.cpp>
 // class Base
 // {
@@ -417,24 +418,153 @@ using namespace std;
 //     return 0;
 // }
 
-class where
+// class where
+// {
+// private:
+//     char charray[10];
+
+// public:
+//     void reveal()
+//     {
+//         cout << "\nMy object's address is " << this;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     where w1, w2, w3;
+//     w1.reveal();
+//     w2.reveal();
+//     w3.reveal();
+//     cout << endl;
+//     return 0;
+// }
+
+// class What
+// {
+// private:
+//     int alpha;
+
+// public:
+//     void tester()
+//     {
+//         this->alpha = 11;
+//         cout << this->alpha;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     What w;
+//     w.tester();
+//     cout << endl;
+//     return 0;
+// }
+
+// returning members of an object by reference
+// class Alpha
+// {
+// private:
+//     int data;
+
+// public:
+//     Alpha() {}
+//     Alpha(int d) { data = d; }
+//     void display() { cout << data; }
+//     Alpha &operator=(Alpha &a)
+//     {
+//         data = a.data;
+//         cout << "\nAssignment operator invoked";
+//         return *this;
+//     }
+// };
+
+// int main()
+// {
+//     Alpha a1(37);
+//     Alpha a2, a3;
+
+//     a3 = a2 = a1;
+//     cout << "\nna2=";
+//     a2.display();
+//     cout << "\nna3=";
+//     a3.display();
+//     cout << endl;
+//     return 0;
+// }
+
+// The Strimem function using this pointer
+class strCount
 {
 private:
-    char charray[10];
-
-public:
-    void reveal()
+    int count;
+    char *str;
+    friend class String;
+    // member functions are private
+    strCount(char *s)
     {
-        cout << "\nMy object's address is " << this;
+        int length = strlen(s);
+        str = new char[length + 1];
+        strcpy(str, s);
+        count = 1;
+    }
+    ~strCount()
+    {
+        delete[] str;
     }
 };
 
-int main(int argc, char const *argv[])
+class String
 {
-    where w1, w2, w3;
-    w1.reveal();
-    w2.reveal();
-    w3.reveal();
-    cout << endl;
+private:
+    strCount *psc;
+
+public:
+    String() { psc = new strCount("NULL"); }
+    String(char *s) { psc = new strCount(s); }
+    String(String &S)
+    {
+        cout << "\nCOPY CONSTRUCTOR";
+        psc = S.psc;
+        (psc->count)++;
+    }
+    ~String()
+    {
+        if (psc->count == 1)
+            delete psc;
+        else
+            (psc->count)--;
+    }
+    void display()
+    {
+        cout << psc->str;
+        cout << "(addr=" << psc << ")";
+    }
+
+    String &operator=(String &S)
+    {
+        if (this == &S)
+            return *this;
+        if (psc->count == 1) // if we are its last user,
+            delete psc;      // delete our strCount
+        else                 // otherwise,
+            (psc->count)--;  // decrement its count
+        psc = S.psc;         // use argument’s strCount
+        (psc->count)++;
+        return *this;
+    }
+};
+
+int main()
+{
+    char word[] = "When the fox preaches, look to your geese";
+    String s3(word);
+    String s1, s2;
+    s1 = s2 = s3;
+    cout << "\ns1=";
+    s1.display(); // display it
+    cout << "\ns2=";
+    s2.display(); // display it
+    cout << endl; // wait for keypress
     return 0;
 }
