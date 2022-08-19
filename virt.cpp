@@ -494,77 +494,161 @@ using namespace std;
 // }
 
 // The Strimem function using this pointer
-class strCount
-{
-private:
-    int count;
-    char *str;
-    friend class String;
-    // member functions are private
-    strCount(char *s)
-    {
-        int length = strlen(s);
-        str = new char[length + 1];
-        strcpy(str, s);
-        count = 1;
-    }
-    ~strCount()
-    {
-        delete[] str;
-    }
-};
+// class strCount
+// {
+// private:
+//     int count;
+//     char *str;
+//     friend class String;
+//     // member functions are private
+//     strCount(char *s)
+//     {
+//         int length = strlen(s);
+//         str = new char[length + 1];
+//         strcpy(str, s);
+//         count = 1;
+//     }
+//     ~strCount()
+//     {
+//         delete[] str;
+//     }
+// };
 
-class String
-{
-private:
-    strCount *psc;
+// class String
+// {
+// private:
+//     strCount *psc;
 
-public:
-    String() { psc = new strCount("NULL"); }
-    String(char *s) { psc = new strCount(s); }
-    String(String &S)
-    {
-        cout << "\nCOPY CONSTRUCTOR";
-        psc = S.psc;
-        (psc->count)++;
-    }
-    ~String()
-    {
-        if (psc->count == 1)
-            delete psc;
-        else
-            (psc->count)--;
-    }
-    void display()
-    {
-        cout << psc->str;
-        cout << "(addr=" << psc << ")";
-    }
+// public:
+//     String() { psc = new strCount("NULL"); }
+//     String(char *s) { psc = new strCount(s); }
+//     String(String &S)
+//     {
+//         cout << "\nCOPY CONSTRUCTOR";
+//         psc = S.psc;
+//         (psc->count)++;
+//     }
+//     ~String()
+//     {
+//         if (psc->count == 1)
+//             delete psc;
+//         else
+//             (psc->count)--;
+//     }
+//     void display()
+//     {
+//         cout << psc->str;
+//         cout << "(addr=" << psc << ")";
+//     }
 
-    String &operator=(String &S)
-    {
-        if (this == &S)
-            return *this;
-        if (psc->count == 1) // if we are its last user,
-            delete psc;      // delete our strCount
-        else                 // otherwise,
-            (psc->count)--;  // decrement its count
-        psc = S.psc;         // use argument’s strCount
-        (psc->count)++;
-        return *this;
-    }
-};
+//     String &operator=(String &S)
+//     {
+//         if (this == &S)
+//             return *this;
+//         if (psc->count == 1) // if we are its last user,
+//             delete psc;      // delete our strCount
+//         else                 // otherwise,
+//             (psc->count)--;  // decrement its count
+//         psc = S.psc;         // use argument’s strCount
+//         (psc->count)++;
+//         return *this;
+//     }
+// };
 
-int main()
-{
-    char word[] = "When the fox preaches, look to your geese";
-    String s3(word);
-    String s1, s2;
-    s1 = s2 = s3;
-    cout << "\ns1=";
-    s1.display(); // display it
-    cout << "\ns2=";
-    s2.display(); // display it
-    cout << endl; // wait for keypress
-    return 0;
-}
+// int main()
+// {
+//     char word[] = "When the fox preaches, look to your geese";
+//     String s3(word);
+//     String s1, s2;
+//     s1 = s2 = s3;
+//     cout << "\ns1=";
+//     s1.display(); // display it
+//     cout << "\ns2=";
+//     s2.display(); // display it
+//     cout << endl; // wait for keypress
+//     return 0;
+// }
+
+#include <typeinfo>
+
+// class Base
+// {
+//     virtual void vertFunc();
+// };
+
+// class Derv1 : public Base
+// {
+// };
+// class Derv2 : public Base
+// {
+// };
+
+// bool isDerv1(Base *pUnknwon)
+// {
+//     Derv1 *pDerv1;
+//     if (pDerv1 = dynamic_cast<Derv1 *>(pUnknwon))
+//         return true;
+//     else
+//         return false;
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     Derv1 *d1 = new Derv1;
+//     Derv2 *d2 = new Derv2;
+//     if (isDerv1(d1))
+//         cout << "d1 is a member of the Derv1 class \n";
+//     else
+//         cout << "d1 is not a member of the Derv1 class\n";
+//     if (isDerv1(d2))
+//         cout << "d1 is a member of the Derv1 class \n";
+//     else
+//         cout << "d1 is not a member of the Derv1 class\n";
+
+//     return 0;
+// }
+
+// using namespace std;
+
+// class Base
+// {
+// protected:
+//     int ba;
+
+// public:
+//     Base() : ba(0)
+//     {
+//     }
+//     Base(int b) : ba(b) {}
+//     virtual void vertFunc()
+//     {
+//     }
+//     void show() { cout << "Base: ba=" << ba << endl; }
+// };
+
+// class Derv : public Base
+// {
+// private:
+//     int da;
+
+// public:
+//     Derv(int b, int d) : da(d)
+//     {
+//         ba = b;
+//     }
+//     void show()
+//     {
+//         cout << "Derv: ba=" << ba << ",da=" << da << endl;
+//     }
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     Base *pBase = new Base(10);
+//     Derv *pDerv = new Derv(21, 22);
+
+//     pBase = new Derv(31, 32);
+//     pDerv = dynamic_cast<Derv *>(pBase);
+//     pDerv->show();
+//     return 0;
+// }
