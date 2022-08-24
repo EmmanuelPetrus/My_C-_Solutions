@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.docx": "plaintext",
         "iostream": "cpp",
         "cmath": "cpp",
         "iomanip": "cpp",
@@ -11,7 +12,8 @@
         "string": "cpp",
         "cstring": "cpp",
         "istream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 }
