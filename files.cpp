@@ -1,17 +1,51 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
-
+#include <string>
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    ifstream ifstr;
-    ifstr.open("file3", ios::in | ios::ate);
-    cout << "File size:" << ifstr.tellg();
-    ifstr.close();
+    int int1 = 12345;
+    double double1 = 45.78;
+
+    ofstream strmOut("Sample", ios::out | ios::binary);
+    if (!strmOut.is_open())
+    {
+        cout << "The file Sample cannot be opened for writing!";
+        assert(false);
+    }
+
+    strmOut.write(reinterpret_cast<char *>(&int1), sizeof(int));
+    strmOut.write(reinterpret_cast<char *>(&double1), sizeof(double));
+    strmOut.close();
+
+    int int2;
+    double double2;
+
+    ifstream strmIn("Sample", ios::in | ios::binary);
+    if (!strmIn.is_open())
+    {
+        cout << "The file Sample cannot be opened for writing!";
+        assert(false);
+    }
+    strmIn.read(reinterpret_cast<char *>(&int2), sizeof(int));
+    strmIn.read(reinterpret_cast<char *>(&double2), sizeof(double));
+    strmIn.close();
+
+    cout << "Value of int2: " << int2 << endl;
+    cout << "Value of double2: " << double2 << endl;
     return 0;
 }
+
+// int main(int argc, char const *argv[])
+// {
+//     ifstream ifstr;
+//     ifstr.open("file3", ios::in | ios::ate);
+//     cout << "File size:" << ifstr.tellg();
+//     ifstr.close();
+//     return 0;
+// }
 
 // int main(int argc, char const *argv[])
 // {
