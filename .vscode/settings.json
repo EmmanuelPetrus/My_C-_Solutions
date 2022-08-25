@@ -13,7 +13,8 @@
         "cstring": "cpp",
         "istream": "cpp",
         "random": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "fstream": "cpp"
     },
     "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 }
