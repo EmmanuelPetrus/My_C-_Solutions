@@ -14,7 +14,8 @@
         "istream": "cpp",
         "random": "cpp",
         "iosfwd": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "limits": "cpp"
     },
     "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 }
