@@ -36,6 +36,7 @@ int main()
     {
         if (first <= second)
         {
+            cout << first<<endl;
             strm3 << first << " ";
             strm1 >> first;
             if (!strm1)
@@ -43,6 +44,7 @@ int main()
         }
         else
         {
+            cout << second <<endl;
             strm3 << second << " ";
             strm2 >> second;
             if (!strm2)
