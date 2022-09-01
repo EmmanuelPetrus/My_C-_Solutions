@@ -1,26 +1,21 @@
 #ifndef STUDEN_H
 #define STUDEN_H
 #include <iostream>
-#include <fstream>
-#include <cassert>
-#include <iomanip>
-#include <cstring>
+#include<iomanip>
 #include <string>
 using namespace std;
 
 class Student
 {
 private:
-    int stdId;
-    char stdName[20];
-    double stdGpa;
+    int score;
+    string name;
+    char grade;
 
 public:
-    Student(int, const string &, double);
+    Student(string name, int score);
     Student();
     ~Student();
-    int getId() const;
-    string getName() const;
-    double getGpa() const;
+    void print();
 };
 #endif
