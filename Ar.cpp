@@ -35,38 +35,11 @@ void Array::sort()
         int key = arr[i];
         int k = i - 1;
 
-        while (k > 0 && key < arr[k])
+        while (k >= 0 && key < arr[k])
         {
             arr[k + 1] = arr[k];
             --k;
         }
         arr[k + 1] = key;
-
-        // int d = i - 1;
-        // int key = *(arr + i);
-        // int k = *(arr + d);
-        // if (*(arr) > *(arr + m))
-        // if (arr[i] > arr[m])
-        // {
-        //     // int temp = *(arr);
-        //     // *(arr) = *(arr + m);
-        //     // *(arr + m) = temp;
-        //     int temp = arr[i];
-        //     arr[i] = arr[m];
-        //     arr[m] = temp;
-        // }
-        // for (int j = i; j >= 0; j--)
-        // {
-        //     // if (*(arr + i) < *(arr + j))
-        //     if (arr[i] < arr[j])
-        //     {
-        //         // int temp = *(arr + i);
-        //         // *(arr + i) = *(arr + j);
-        //         // *(arr + j) = temp;
-        //         int temp = arr[i];
-        //         arr[i] = arr[j];
-        //         arr[j] = temp;
-        //     }
-        // }
     }
 }
