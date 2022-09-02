@@ -15,7 +15,20 @@
         "random": "cpp",
         "iosfwd": "cpp",
         "fstream": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "array": "cpp",
+        "type_traits": "cpp",
+        "list": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "streambuf": "cpp",
+        "unordered_map": "cpp",
+        "memory_resource": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "memory": "cpp",
+        "typeinfo": "cpp",
+        "initializer_list": "cpp"
     },
     "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 }
