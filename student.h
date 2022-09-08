@@ -1,21 +1,39 @@
-#ifndef STUDEN_H
-#define STUDEN_H
-#include <iostream>
-#include<iomanip>
-#include <string>
-using namespace std;
+#ifndef Student_H
+#define Student_H
+#include "Person.h"
 
-class Student
+class Student:public Person
 {
 private:
-    int score;
-    string name;
-    char grade;
+    double gpa;
 
 public:
-    Student(string name, int score);
     Student();
+    Student(long identity, double gpa);
     ~Student();
-    void print();
+    Student(const Student &student);
+    void print() const;
 };
+
 #endif
+// #ifndef STUDEN_H
+// #define STUDEN_H
+// #include <iostream>
+// #include<iomanip>
+// #include <string>
+// using namespace std;
+
+// class Student
+// {
+// private:
+//     int score;
+//     string name;
+//     char grade;
+
+// public:
+//     Student(string name, int score);
+//     Student();
+//     ~Student();
+//     void print();
+// };
+// #endif

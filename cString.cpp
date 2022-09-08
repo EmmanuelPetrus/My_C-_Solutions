@@ -1,24 +1,168 @@
-#include <cstring>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <cassert>
 using namespace std;
 
 int main()
 {
-    string strg("Hello my friends");
+    ifstream inputFile;
+    ofstream outputFile;
+    string line;
 
-    cout << "Size: " << strg.size() << endl;
-    cout << "Maximum size: " << strg.max_size() << endl;
-    cout << "Capacity: " << strg.capacity() << endl;
-    cout << "Empty? " << boolalpha << strg.empty() << endl;
-    cout << endl;
-    strg.reserve(20);
-    cout << "Size: " << strg.size() << endl;
-    cout << "Maximum size: " << strg.max_size() << endl;
-    cout << "Capacity: " << strg.capacity() << endl;
-    cout << "Empty? " << boolalpha << strg.empty();
+    inputFile.open("inFile.dat");
+    assert(inputFile);
+    int maxSize = 0;
+    while (!inputFile.eof())
+    {
+        getline(inputFile, line);
+        if (line.size() > maxSize)
+        {
+            maxSize = line.size();
+        }
+    }
+    inputFile.close();
+
+    inputFile.open("inFile.dat");
+    assert(inputFile);
+    outputFile.open("outFile.dat");
+    assert(outputFile);
+    while (!inputFile.eof())
+    {
+        getline(inputFile, line);
+        string temp(maxSize - line.size(), ' ');
+        line.insert(0, temp);
+        line.append("\n");
+        line.append("\n");
+        outputFile << line;
+    }
+    inputFile.close();
+    outputFile.close();
     return 0;
 }
+
+// int main()
+// {
+//     string first, last;
+//     char init;
+
+//     cout << "Enter first name: ";
+//     cin >> first;
+//     cout << "Enter last name: ";
+//     cin >> last;
+//     cout << "Enter initial: ";
+//     cin >> init;
+//     cout << endl;
+// }
+
+// void reverse(string &strg);
+// bool isPalindrome(string &strg);
+
+// int main()
+// {
+//     string strg;
+//     cout << "Enter a string: ";
+//     getline(cin, strg);
+
+//     if (isPalindrome(strg))
+//     {
+//         cout << strg << " is a palindrome.";
+//     }
+//     else
+//     {
+//         cout << strg << " is not a palindrome.";
+//     }
+//     return 0;
+// }
+
+// bool isPalindrome(string &strg)
+// {
+//     string temp(strg);
+//     reverse(temp);
+//     return (temp == strg);
+// }
+
+// void reverse(string &strg)
+// {
+//     string temp(strg);
+//     int size = strg.size();
+//     for (int i = 0; i < size; i++)
+//         strg[i] = temp[size - 1 - i];
+// }
+// int main(void)
+// {
+//     string strg1("Hello my friends");
+//     string strg2("Hello friends");
+
+//     cout << strg1 << " compared with " << strg2 << ": ";
+//     cout << strg1.compare(strg2) << endl;
+//     cout << "Hello compared with Hello: ";
+//     cout << strg1.compare(0, 5, strg2, 0, 5) << endl;
+//     cout << "Hello compared with Hello: ";
+//     cout << strg1.compare(0, 5, strg2) << endl;
+//     cout << "Hel compared with Hell: ";
+//     cout << strg2.compare(0, 3, "Hello", 4);
+//     return 0;
+// }
+// int main(int argc, char const *argv[])
+// {
+//     string strg("The C++ language is fun to work with.");
+//     cout << strg.substr(8) << endl;
+//     cout << strg.substr(4, 12) << endl;
+//     return 0;
+// }
+
+// void reverse(string &strg);
+
+// int main(int argc, char const *argv[])
+// {
+//     string strg;
+//     cout << "Enter a string: ";
+//     getline(cin, strg);
+//     cout << "Original string: " << strg << endl;
+//     reverse(strg);
+//     cout << "Reversed string: " << strg;
+//     return 0;
+// }
+
+// void reverse(string &strg)
+// {
+//     string temp(strg);
+//     int size = strg.size();
+//     for (int i = 0; i < size; i++)
+//     {
+//         strg[i] = temp[size - 1 - i];
+//     }
+// }
+// int main()
+// {
+//     string strg;
+//     cout << "Enter a line of characters: " << endl;
+//     getline(cin, strg);
+//     cout << strg << endl
+//          << endl;
+//     cout << "Enter lines of characters ended with $:" << endl;
+//     getline(cin, strg, '$');
+//     cout << strg;
+//     return 0;
+// }
+
+// int main()
+// {
+//     string strg("Hello my friends");
+
+//     cout << "Size: " << strg.size() << endl;
+//     cout << "Maximum size: " << strg.max_size() << endl;
+//     cout << "Capacity: " << strg.capacity() << endl;
+//     cout << "Empty? " << boolalpha << strg.empty() << endl;
+//     cout << endl;
+//     strg.reserve(20);
+//     cout << "Size: " << strg.size() << endl;
+//     cout << "Maximum size: " << strg.max_size() << endl;
+//     cout << "Capacity: " << strg.capacity() << endl;
+//     cout << "Empty? " << boolalpha << strg.empty();
+//     return 0;
+// }
 
 // int main()
 // {
