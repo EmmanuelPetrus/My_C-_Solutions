@@ -22,3 +22,4 @@ void Student::print() const
     cout << "Student name: " << name << endl;
     schedule->print();
 }
+Student::~Student() {}
