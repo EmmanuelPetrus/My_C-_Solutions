@@ -13,6 +13,8 @@ private:
     string date_hired;
 
 public:
+    Employee();
+    Employee(const Employee &n);
     Employee(string nm, string num, string birth, string hired);
     ~Employee();
     void getname();
