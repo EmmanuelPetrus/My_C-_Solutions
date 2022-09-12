@@ -8,7 +8,8 @@ Emphour::~Emphour()
 {
 }
 
-void Emphour::calcOvertime()
+void Emphour::getTotalOvertime()
 {
-    overtime_rate = 0.6 * wage;
+    wage += overtime_rate;
+    cout << "Your total wage is " << wage << endl;
 }
