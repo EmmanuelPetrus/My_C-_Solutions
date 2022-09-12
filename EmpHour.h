@@ -5,10 +5,12 @@
 class Emphour : public Employee
 {
 private:
-    float sal, bonus;
+    Employee details;
+    float wage, overtime_rate;
 
 public:
-    Emphour(string name, string number, string b_date, string d_hired, float sal, float bonus);
+    Emphour(Employee &one, float wage);
+    void getTotalOvertime();
     ~Emphour();
 };
 #endif

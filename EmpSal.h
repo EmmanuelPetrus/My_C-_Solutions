@@ -2,12 +2,15 @@
 #define EMPSAL_H
 #include "employee.h"
 
-class EmpSal:public Employee
+class EmpSal : public Employee
 {
 private:
-    float sal,bonus;
+    Employee details;
+    float sal, bonus;
+
 public:
-    EmpSal(string name,string number,string b_date,string d_hired,float sal,float bonus);
+    EmpSal(Employee &one, float sal);
+    void getTotalSal();
     ~EmpSal();
 };
 #endif
