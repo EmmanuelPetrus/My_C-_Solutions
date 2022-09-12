@@ -28,7 +28,25 @@
         "utility": "cpp",
         "memory": "cpp",
         "typeinfo": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "cctype": "cpp",
+        "complex": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdio": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "exception": "cpp",
+        "new": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "atomic": "cpp",
+        "cstdint": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "iterator": "cpp",
+        "system_error": "cpp"
     },
     "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 }
