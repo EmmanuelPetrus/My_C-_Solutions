@@ -2,6 +2,7 @@
 
 Emphour::Emphour(Employee &one, float n) : details(one), wage(n)
 {
+    overtime_rate = 0.6 * wage;
 }
 
 Emphour::~Emphour()
