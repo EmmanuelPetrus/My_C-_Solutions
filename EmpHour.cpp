@@ -12,5 +12,13 @@ Emphour::~Emphour()
 void Emphour::getTotalOvertime()
 {
     wage += overtime_rate;
-    cout << "Your total wage is " << wage << endl;
+    cout << "Wage: " << wage << endl;
+}
+
+void Emphour::getWageDetails()
+{
+    details.getname();
+    details.getbirthdate();
+    details.getnumber();
+    details.getdatehired();
 }

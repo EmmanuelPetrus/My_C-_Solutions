@@ -10,6 +10,7 @@ private:
 
 public:
     EmpSal(Employee &one, float sal);
+    void getSalDetails();
     void getTotalSal();
     ~EmpSal();
 };

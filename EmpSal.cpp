@@ -11,5 +11,13 @@ EmpSal::~EmpSal()
 void EmpSal::getTotalSal()
 {
     sal += bonus;
-    cout << "Your Salary is " << sal << endl;
+    cout << "Salary : " << sal << endl;
+}
+
+void EmpSal::getSalDetails()
+{
+    details.getname();
+    details.getbirthdate();
+    details.getnumber();
+    details.getdatehired();
 }

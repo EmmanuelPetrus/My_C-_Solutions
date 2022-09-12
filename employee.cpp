@@ -13,17 +13,17 @@ Employee ::~Employee() {}
 
 void Employee::getbirthdate()
 {
-    cout << "This is the Employee's birthdate " << birthdate << endl;
+    cout << "Employee BirthDate: " << birthdate << endl;
 }
 void Employee::getname()
 {
-    cout << "This is the Employee's name " << name << endl;
+    cout << "Employee Name: " << name << endl;
 }
 void Employee::getdatehired()
 {
-    cout << "This is the date you were hired " << date_hired << endl;
+    cout << "Date Hired: " << date_hired << endl;
 }
 void Employee::getnumber()
 {
-    cout << "This is the employee's phone number " << number << endl;
+    cout << "Phone Number: " << number << endl;
 }

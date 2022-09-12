@@ -11,6 +11,7 @@ private:
 public:
     Emphour(Employee &one, float wage);
     void getTotalOvertime();
+    void getWageDetails();
     ~Emphour();
 };
 #endif

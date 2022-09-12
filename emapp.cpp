@@ -9,20 +9,11 @@ int main()
     EmpSal sal1(emp1, 17800);
     Emphour sal2(emp2, 14590);
     EmpSal sal3(emp3, 25900);
-    sal1.getname();
-    sal1.getbirthdate();
-    sal1.getdatehired();
-    sal1.getnumber();
+    sal1.getSalDetails();
     sal1.getTotalSal();
-    sal2.getname();
-    sal2.getbirthdate();
-    sal2.getdatehired();
-    sal2.getnumber();
+    sal2.getWageDetails();
     sal2.getTotalOvertime();
-    sal3.getname();
-    sal3.getbirthdate();
-    sal3.getdatehired();
-    sal3.getnumber();
+    sal3.getSalDetails();
     sal3.getTotalSal();
     return 0;
 }
