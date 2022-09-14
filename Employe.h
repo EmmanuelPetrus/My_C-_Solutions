@@ -12,8 +12,8 @@ private:
 
 public:
     Employee(string fname, string initial, string last_name);
-    virtual void print() const;
-    virtual ~Employee();
+    void print();
+    ~Employee();
 };
 
 #endif

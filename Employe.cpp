@@ -7,7 +7,7 @@ Employee::~Employee()
 {
 }
 
-void Employee::print() const
+void Employee::print()
 {
     cout << "Name: " << first_name << " " << initial << " " << last_name << endl;
 }

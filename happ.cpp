@@ -5,7 +5,7 @@ int main()
 {
     Employee *pEmp;
     SalaryEmployee s1("Emmanuel", "A.", "Peter", 250000);
-    HourlyEmployee h1("Emmanuel", "O.", "Olorunfemi", 5);
+    HourlyEmployee h1("Emmanuel", "O.", "Olorunfemi", 15);
     pEmp = &s1;
     pEmp->print();
     pEmp = &h1;
