@@ -22,6 +22,8 @@ public:
     void setNumer(int num);
     void setDenom(int den);
 
+    const Fraction operator+() const;
+    const Fraction operator-() const;
     // Helping private member functions
 private:
     void normalize();

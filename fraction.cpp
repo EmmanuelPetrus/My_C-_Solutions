@@ -67,6 +67,18 @@ int Fraction::gcd(int n, int m)
     }
     return gcd;
 }
+
+const Fraction Fraction::operator+() const
+{
+    Fraction temp(+numer, denom);
+    return temp;
+}
+
+const Fraction Fraction::operator-() const
+{
+    Fraction temp(-numer, denom);
+    return temp;
+}
 Fraction::~Fraction()
 {
 }
