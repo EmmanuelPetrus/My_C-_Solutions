@@ -13,6 +13,6 @@ public:
     SmartPtr(Fraction *ptr);
     ~SmartPtr();
     Fraction &operator*() const;
-    Fraction *operator->()const;
+    Fraction *operator->() const;
 };
 #endif
