@@ -24,6 +24,19 @@ public:
 
     const Fraction operator+() const;
     const Fraction operator-() const;
+    Fraction &operator=(const Fraction &right);
+
+    const Fraction operator++(int);
+    const Fraction operator--(int);
+
+    Fraction &operator+=(const Fraction &right);
+    Fraction &operator-=(const Fraction &right);
+    Fraction &operator*=(const Fraction &right);
+    Fraction &operator/=(const Fraction &right);
+
+    Fraction &operator++();
+    Fraction &operator--();
+
     // Helping private member functions
 private:
     void normalize();
