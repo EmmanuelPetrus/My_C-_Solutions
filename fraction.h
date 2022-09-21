@@ -22,6 +22,7 @@ public:
     void setNumer(int num);
     void setDenom(int den);
 
+    operator double();
     const Fraction operator+() const;
     const Fraction operator-() const;
     Fraction &operator=(const Fraction &right);
@@ -33,10 +34,16 @@ public:
     Fraction &operator-=(const Fraction &right);
     Fraction &operator*=(const Fraction &right);
     Fraction &operator/=(const Fraction &right);
+    Fraction &operator=(const Fraction &right);
 
     Fraction &operator++();
     Fraction &operator--();
 
+    // Declarations of addition operator
+    friend const Fraction operator+(const Fraction &left, const Fraction &right);
+    friend bool operator==(const Fraction &left, const Fraction &right);
+    friend istream &operator>>(istream &left, Fraction &right);
+    friend ostream &operator<<(ostream &left, const Fraction &right);
     // Helping private member functions
 private:
     void normalize();

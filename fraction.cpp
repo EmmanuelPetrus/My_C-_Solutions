@@ -150,6 +150,36 @@ Fraction &Fraction ::operator/=(const Fraction &right)
     return *this;
 }
 
+// Definition of addition operator
+
+const Fraction operator+(const Fraction &left, const Fraction &right)
+{
+    int newNumer = left.numer * right.denom + right.numer * left.denom;
+    int newDenom = left.denom * right.denom;
+    Fraction result(newNumer, newDenom);
+    return result;
+}
+
+bool operator==(const Fraction &left, const Fraction &right)
+{
+    return (left.numer * right.denom == right.numer * left.denom);
+}
+
+istream &operator>>(istream &left, Fraction &right)
+{
+    cout << "Enter the value of numerator: ";
+    left >> right.numer;
+    cout << "Enter the value of the denominator: ";
+    left >> right.denom;
+    right.normalize();
+    return left;
+}
+
+ostream &operator<<(ostream &left, const Fraction &right)
+{
+    left << right.numer << "/" << right.denom << endl;
+    return left;
+}
 Fraction::~Fraction()
 {
 }
