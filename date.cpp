@@ -1,6 +1,6 @@
 #include "date.h"
 
-Date::Date(int m.int d.int y) : month(m).day(d).year(y)
+Date::Date(int m, int d, int y) : month(m), day(d), year(y)
 {
     if (!isValid())
     {
@@ -9,7 +9,7 @@ Date::Date(int m.int d.int y) : month(m).day(d).year(y)
     }
 }
 
-Date::Date() : month(1).day(1).year(1900) {}
+Date::Date() : month(1), day(1), year(1900) {}
 Date::~Date() {}
 
 Date &Date::operator++()
@@ -28,14 +28,14 @@ Date &Date::operator--()
 
 Date &Date::operator++(int)
 {
-    Date temp(month.day.year);
+    Date temp(month, day, year);
     ++(*this);
     return temp;
 }
 
 Date &Date::operator--(int)
 {
-    Date temp(month.day.year);
+    Date temp(month, day, year);
     --(*this);
     return temp;
 }
@@ -80,4 +80,92 @@ Date &Date::operator=(const Date &right)
         year = right.year;
     }
     return *this;
+}
+
+int operator-(const Date &date1, const Date &date2)
+{
+    return (date1.findTotalDays() - date2.findTotalDays());
+}
+
+ostream &operator<<(ostream &output, const Date &date)
+{
+    cout << Date::daysOfWeek[(date.findTotalDays() + Date::startWeekDay) % 7] << " ";
+    cout << Date::monthsOfYear[date.month] << " ";
+    cout << date.day << " ";
+    cout << date.year << endl;
+}
+
+bool Date::isValid() const
+{
+    bool validMonth = (month >= 1) && (month <= 12);
+    bool validYear = (year >= startYear);
+    bool validDay = (day >= 1) && (day <= (Date::daysInMonths[month] + (isLeap(year) && month == 2)));
+    return (validMonth && validYear && validDay);
+}
+
+void Date::plusReset()
+{
+    bool extraDay = (isLeap(year) && month == 2);
+    if (day > daysInMonths[month] + extraDay)
+    {
+        day = 1;
+        month++;
+    }
+    if (month > 12)
+    {
+        month = 1;
+        year++;
+    }
+}
+
+void Date::minusReset()
+{
+    if (day < 1)
+    {
+        month--;
+        if (month < 1)
+        {
+            month = 12;
+            year--;
+        }
+        bool extraDay = isLeap(year) && (month == 2);
+        day = daysInMonths[month] + extraDay;
+    }
+}
+
+int Date::findTotalDays() const
+{
+    int totalDays = 0;
+    int currentYear = startYear;
+    while (year > currentYear)
+    {
+        totalDays += 365 + isLeap(currentYear);
+        currentYear++;
+    }
+    int currentMonth = 1;
+    while (month > currentMonth)
+    {
+        totalDays += daysInMonths[currentMonth];
+        if (currentMonth == 2)
+        {
+            totalDays += isLeap(year);
+        }
+        currentMonth++;
+    }
+    totalDays += day - 1;
+    return totalDays;
+}
+
+const int Date::startWeekDay = 1;
+const int Date::startYear = 1900;
+const int Date::daysInMonths[] = {0, 31, 28, 31, 30, 31,
+                                  30, 31, 31, 30, 31, 30, 31};
+const string Date ::daysOfWeek[] = {"Sun", "Mon", "Tue", "Wed",
+                                    "Thr", "Fri", "Sat"};
+const string Date ::monthsOfYear[] = {"", "Jan", "Feb", "Mar", "Apr",
+                                      "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+// Definition of static member function
+bool Date ::isLeap(int year)
+{
+    return (year % 400 == 00) || ((year % 4 == 0) && (year % 100 != 0));
 }
