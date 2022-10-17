@@ -3,13 +3,13 @@
 #include <cstring>
 using namespace std;
 
-template <typename T>
-T smaller(const T &first, const T &second)
-{
-    if (first < second)
-        return first;
-    return second;
-}
+// template <typename T>
+// T smaller(const T &first, const T &second)
+// {
+//     if (first < second)
+//         return first;
+//     return second;
+// }
 
 // specialization of template function
 // template <>
@@ -20,17 +20,17 @@ T smaller(const T &first, const T &second)
 //     return second;
 // }
 
-int main()
-{
-    string str1 = "Hello";
-    string str2 = "Hi";
-    cout << "Smaller (Hello , Hi): " << smaller(str1, str2) << endl;
+// int main()
+// {
+//     string str1 = "Hello";
+//     string str2 = "Hi";
+//     cout << "Smaller (Hello , Hi): " << smaller(str1, str2) << endl;
 
-    const char *s1 = "Bye";
-    const char *s2 = "Bye Bye";
-    cout << "Smaller (Bye , Bye Bye)" << smaller(s1, s2) << endl;
-    return 0;
-}
+//     const char *s1 = "Bye";
+//     const char *s2 = "Bye Bye";
+//     cout << "Smaller (Bye , Bye Bye)" << smaller(s1, s2) << endl;
+//     return 0;
+// }
 // template <typename T, int N>
 // void print(T (&array)[N])
 // {
