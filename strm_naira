@@ -1,0 +1,12 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+ostream& currency(ostream& stream)
+{
+    cout<<"#";
+    stream.precision(2);
+    stream.fill('*');
+    stream.setf(ios::fixed,ios::floatfield);
+    return
+}
