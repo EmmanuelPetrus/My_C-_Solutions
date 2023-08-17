@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
     vector <int> :: reverse_iterator iter2;
 
     for (int i = 0; i < 10; i++)
-    {
+    { 
         vec.push_back(i*10);
     }
 
